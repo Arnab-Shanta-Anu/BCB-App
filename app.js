@@ -5,6 +5,7 @@ const summeryRoute = require("./routes/summeryRoute");
 
 const app = express();
 app.use(express.json());
+app.use(express.static("public"));
 
 //register view engine
 app.set("view engine", "ejs");
