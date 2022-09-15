@@ -1,6 +1,10 @@
 const express = require("express");
+const userRoute = require("./routes/userRoute");
+const companyRoute = require("./routes/companyRoute");
+const summeryRoute = require("./routes/summeryRoute");
 
 const app = express();
+app.use(express.json());
 
 //register view engine
 app.set("view engine", "ejs");
@@ -11,34 +15,11 @@ app.get("/", (req, res) => {
   res.redirect("/login");
   res.render("index");
 });
+app.use("/company/summery", summeryRoute);
+app.use("/company", companyRoute);
+app.use("/user", userRoute);
 
 //view all companies
-app.get("/company/all", (req, res) => {
-  res.render("all-companies");
-});
-
-//view single company
-app.get("/company/:name", (req, res) => {
-  res.render("company");
-});
-
-//add a company
-app.post("/company/:name", (req, res) => {
-  res.send("company add req");
-});
-
-//delete a company
-app.delete("/company/:name", (req, res) => {
-  res.send("company delete req");
-});
-
-app.post("/company/modify/:name", (req, res) => {
-  res.send("company modify req");
-});
-
-app.get("/company/summery/:name", (req, res) => {
-  res.remder("company");
-});
 
 app.get("/login", (req, res) => {
   res.render("login");
