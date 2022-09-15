@@ -12,7 +12,6 @@ app.set("view engine", "ejs");
 app.listen(5000);
 
 app.get("/", (req, res) => {
-  res.redirect("/login");
   res.render("index");
 });
 app.use("/company/summery", summeryRoute);
