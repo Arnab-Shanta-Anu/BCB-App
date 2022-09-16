@@ -3,16 +3,11 @@
   <%- include("./partials/head.ejs") %>
   <body>
     <%- include("./partials/nav.ejs") %>
-    <p>login page</p>
+    <p>register page</p>
     <dev class="bcb">
-      <form action="/auth" method="post">
-        <input id="name" type="text" placeholder="Enter your name" required />
-        <input
-          id="pass"
-          type="password"
-          placeholder="Enter your password"
-          required
-        />
+      <form aciton="/auth" method="get">
+        <input type="text" placeholder="Enter your name" required />
+        <input type="password" placeholder="Enter your password" required />
 
         <button type="submit">submit</button>
       </form>

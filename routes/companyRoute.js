@@ -8,7 +8,7 @@ router.get("/all", (req, res) => {
 
 //view single company
 router.get("/:name", (req, res) => {
-  res.render("company");
+  res.render("company", { title: "company view" });
 });
 
 //add a company
