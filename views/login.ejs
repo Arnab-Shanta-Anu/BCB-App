@@ -5,10 +5,17 @@
     <%- include("./partials/nav.ejs") %>
     <p>login page</p>
     <dev class="bcb">
-      <form action="/auth" method="post">
-        <input id="name" type="text" placeholder="Enter your name" required />
+      <form action="/auth" method="POST">
+        <input
+          id="name"
+          name="name"
+          type="text"
+          placeholder="Enter your name"
+          required
+        />
         <input
           id="pass"
+          name="pass"
           type="password"
           placeholder="Enter your password"
           required

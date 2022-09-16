@@ -20,10 +20,10 @@ mongoose
   });
 
 const app = express();
-var jsonParser = bodyParser.json();
 app.use(express.static("public"));
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
 //register view engine
 app.set("view engine", "ejs");
 
@@ -35,8 +35,12 @@ app.use("/company", companyRoute);
 app.use("/user", userRoute);
 app.use("/auth", authRoute);
 
-app.post("/login", (req, res) => {
+app.get("/login", (req, res) => {
   res.render("login", { title: "login" });
+});
+app.post("/login", (req, res) => {
+  // res.render("login", { title: "login" });
+  next();
 });
 app.get("/register", (req, res) => {
   res.render("register", { title: "Register" });

@@ -1,13 +1,11 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+
 let router = express.Router();
-router.get("/", (req, res, next) => {
-  console.log(req.body.name, req.body.pass);
-  if (req.body.name === "John" && req.body.pass === "doe") {
-    res.redirect("/company/all");
-  } else {
-    res.redirect("/company/benham");
-  }
-  next();
+router.post("/", (req, res, next) => {
+  console.log("Hit get");
+  console.log(req.body.name);
+  console.log(req.body.pass);
+  res.send(req.url);
 });
+
 module.exports = router;
