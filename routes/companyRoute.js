@@ -3,7 +3,7 @@ let router = express.Router();
 
 //view all companies
 router.get("/all", (req, res) => {
-  res.render("all-companies");
+  res.render("all-companies", { title: "all companies" });
 });
 
 //view single company
