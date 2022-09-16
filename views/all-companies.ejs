@@ -4,6 +4,12 @@
   <body>
     <%- include("./partials/nav.ejs") %>
     <p>all companies</p>
-    <%- include("./partials/footer.ejs") %>
+    <%if (companies.length !== 0) { companies.forEach((company) => { %>
+    <ul>
+      <li><%= company.name %></li>
+    </ul>
+    <% }) } else {%>
+    <p>No companies found...</p>
+    <% } %> <%- include("./partials/footer.ejs") %>
   </body>
 </html>

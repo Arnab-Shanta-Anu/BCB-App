@@ -1,10 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+
 const userRoute = require("./routes/userRoute");
 const companyRoute = require("./routes/companyRoute");
 const summeryRoute = require("./routes/summeryRoute");
 const authRoute = require("./routes/authRoute");
+const User = require("./models/user");
 
 const dbURI = "mongodb://localhost:27017/BCB-App";
 mongoose
@@ -32,8 +34,6 @@ app.use("/company/summery", summeryRoute);
 app.use("/company", companyRoute);
 app.use("/user", userRoute);
 app.use("/auth", authRoute);
-
-//view all companies
 
 app.post("/login", (req, res) => {
   res.render("login", { title: "login" });

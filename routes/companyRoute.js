@@ -1,9 +1,21 @@
 const express = require("express");
+const Company = require("../models/company");
+
 let router = express.Router();
 
 //view all companies
 router.get("/all", (req, res) => {
-  res.render("all-companies", { title: "all companies" });
+  Company.find()
+    .sort({ name: 1 })
+    .then((result) => {
+      res.render("all-companies", {
+        title: "all companies",
+        companies: result,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 //view single company
@@ -13,7 +25,24 @@ router.get("/:name", (req, res) => {
 
 //add a company
 router.post("/:name", (req, res) => {
-  res.send("company add req");
+  let company = new Company({
+    name: "benham",
+    address: "savar",
+    phone: "01234",
+    email: "abc@d",
+    BIN: "1234",
+    ID: "1234",
+    pass: "1234",
+    circle: "1",
+  });
+  company
+    .save()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 //delete a company
