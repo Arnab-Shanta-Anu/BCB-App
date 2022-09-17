@@ -6,7 +6,13 @@
     <p>all companies</p>
     <%if (companies.length !== 0) { companies.forEach((company) => { %>
     <ul>
-      <li><%= company.name %></li>
+      <a href="/company/<%=company._id%>"" >
+        <li>
+          <b><%= company.name %></b>
+          <br />
+          <p><%=company.ID%> <%=company.pass%></p>
+        </li>
+      </a>
     </ul>
     <% }) } else {%>
     <p>No companies found...</p>

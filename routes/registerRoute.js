@@ -12,7 +12,7 @@ router.post("/", (req, res, next) => {
   let user = new User(req.body);
   user
     .save()
-    .then(console.log(req.body))
+    .then(console.log(user))
     .catch((err) => {
       console.log(err);
     });

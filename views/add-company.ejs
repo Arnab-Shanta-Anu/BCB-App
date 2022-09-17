@@ -4,6 +4,49 @@
   <body>
     <%- include("./partials/nav.ejs") %>
     <p>add company</p>
+    <div class="bcb">
+      <form action="/company/add" method="POST">
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Company Name"
+          required
+        />
+        <input
+          type="text"
+          id="address"
+          name="address"
+          placeholder="Address"
+          required
+        />
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Phone No."
+          required
+        />
+        <input type="email" id="email" name="email" placeholder="Email" />
+        <input type="text" id="BIN" name="BIN" placeholder="BIN No." required />
+        <input type="text" id="ID" name="ID" placeholder="NBR ID" required />
+        <input
+          type="text"
+          id="pass"
+          name="pass"
+          placeholder="NBR Password"
+          required
+        />
+        <input
+          type="text"
+          id="circle"
+          name="circle"
+          placeholder="Circle No."
+          required
+        />
+        <button type="submit">submit</button>
+      </form>
+    </div>
     <%- include("./partials/footer.ejs") %>
   </body>
 </html>

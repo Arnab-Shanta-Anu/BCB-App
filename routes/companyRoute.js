@@ -18,27 +18,28 @@ router.get("/all", (req, res) => {
     });
 });
 
-//view single company
-router.get("/:name", (req, res) => {
-  res.render("company", { title: "company view" });
-});
-
 //add a company
-router.post("/:name", (req, res) => {
-  let company = new Company({
-    name: "benham",
-    address: "savar",
-    phone: "01234",
-    email: "abc@d",
-    BIN: "1234",
-    ID: "1234",
-    pass: "1234",
-    circle: "1",
-  });
+router.get("/add", (req, res) => {
+  res.render("add-company", { title: "Add company" });
+});
+router.post("/add", (req, res) => {
+  let company = new Company(req.body);
   company
     .save()
     .then((result) => {
-      res.send(result);
+      res.redirect("/company/all");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+//view single company
+router.get("/:id", (req, res) => {
+  const id = req.params.id;
+  Company.findById(id)
+    .then((result) => {
+      res.render("company", { title: "company view", company: result });
     })
     .catch((err) => {
       console.log(err);
@@ -46,13 +47,13 @@ router.post("/:name", (req, res) => {
 });
 
 //delete a company
-router.delete("/:name", (req, res) => {
+router.delete("/:id", (req, res) => {
   res.send("company delete req");
 });
 
 //modify a company details
-router.put("/:name", (req, res) => {
-  res.send(`${req.params.name} modify req`);
+router.put("/:id", (req, res) => {
+  res.send(`${req.params.id} modify req`);
 });
 
 module.exports = router;
