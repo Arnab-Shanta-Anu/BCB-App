@@ -4,7 +4,7 @@
   <body>
     <%- include("./partials/nav.ejs") %>
     <h1>404</h1>
-    <p>oops file not found!</p>
+    <p>oops file "<%= req.url%>" not found!</p>
     <%- include("./partials/footer.ejs") %>
   </body>
 </html>

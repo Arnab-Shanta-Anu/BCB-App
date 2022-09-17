@@ -77,7 +77,7 @@ h3 {
   display: block;
   margin-top: 24px;
 }
-textarea {
+.bcb textarea {
   height: 120px;
 }
 .bcb button {
@@ -86,6 +86,15 @@ textarea {
   color: white;
   padding: 6px;
   border: 0;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+.bcb a {
+  margin-top: 20px;
+  background: crimson;
+  color: white;
+  padding: 3px;
+  border: 5;
   font-size: 1.2em;
   cursor: pointer;
 }

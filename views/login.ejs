@@ -5,7 +5,7 @@
     <%- include("./partials/nav.ejs") %>
     <p>login page</p>
     <dev class="bcb">
-      <form action="/auth" method="POST">
+      <form action="/login" method="POST">
         <input
           id="name"
           name="name"
@@ -20,7 +20,7 @@
           placeholder="Enter your password"
           required
         />
-
+        <a href="/register">register</a>
         <button type="submit">submit</button>
       </form>
     </dev>

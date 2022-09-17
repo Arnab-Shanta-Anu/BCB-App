@@ -5,7 +5,9 @@ const mongoose = require("mongoose");
 const userRoute = require("./routes/userRoute");
 const companyRoute = require("./routes/companyRoute");
 const summeryRoute = require("./routes/summeryRoute");
-const authRoute = require("./routes/authRoute");
+const loginRoute = require("./routes/loginRoute");
+const registerRoute = require("./routes/registerRoute");
+
 const User = require("./models/user");
 
 const dbURI = "mongodb://localhost:27017/BCB-App";
@@ -33,20 +35,10 @@ app.get("/", (req, res) => {
 app.use("/company/summery", summeryRoute);
 app.use("/company", companyRoute);
 app.use("/user", userRoute);
-app.use("/auth", authRoute);
-
-app.get("/login", (req, res) => {
-  res.render("login", { title: "login" });
-});
-app.post("/login", (req, res) => {
-  // res.render("login", { title: "login" });
-  next();
-});
-app.get("/register", (req, res) => {
-  res.render("register", { title: "Register" });
-});
+app.use("/login", loginRoute);
+app.use("/register", registerRoute);
 
 //404
 app.use((req, res) => {
-  res.status(404).render("404", { title: "404" });
+  res.status(404).render("404", { title: "404", req });
 });
