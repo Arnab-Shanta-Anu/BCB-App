@@ -39,7 +39,7 @@ router.get("/:id", (req, res) => {
   const id = req.params.id;
   Company.findById(id)
     .then((result) => {
-      res.render("company", { title: "company view", company: result });
+      res.render("company", { title: "Details", company: result });
     })
     .catch((err) => {
       console.log(err);

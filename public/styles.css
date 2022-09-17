@@ -56,6 +56,16 @@ h3 {
   text-transform: capitalize;
   margin-bottom: 8px;
 }
+
+.single a {
+  display: block;
+  margin: 40px 0;
+  padding-left: 30px;
+  border-left: 6px solid crimson;
+}
+.single a:hover h3 {
+  color: crimson;
+}
 .content {
   margin-left: 20px;
 }

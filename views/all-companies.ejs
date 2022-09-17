@@ -6,14 +6,16 @@
     <p>all companies</p>
     <%if (companies.length !== 0) { companies.forEach((company) => { %>
     <ul>
-      <a href="/company/<%=company._id%>"" >
+      <div class="single">
+        <a href="/company/<%=company._id%>"" >
         <li>
-          <b><%= company.name %></b>
+          <h3><%= company.name %></>
           <br />
           <p><%=company.ID%> <%=company.pass%></p>
         </li>
       </a>
-    </ul>
+    </div>
+  </ul>
     <% }) } else {%>
     <p>No companies found...</p>
     <% } %> <%- include("./partials/footer.ejs") %>
