@@ -104,6 +104,6 @@ dist
 .tern-port
 
 #exclue other files
-.xlsx
-.docx
-/client
+*.xlsx
+*.docx
+
