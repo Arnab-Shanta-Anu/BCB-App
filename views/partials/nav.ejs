@@ -3,7 +3,7 @@
     <a href="/"
       ><h1>
         <span><img src="/bcb-logo.PNG" alt="bcb-logo" srcset="" /></span>
-        <div class="logo">BCB App</div>
+        BCB App
       </h1></a
     >
     <p>total vat & tax solution</p>
@@ -14,5 +14,10 @@
   </ul>
 </nav>
 <script>
-  gsap.from(".logo", { duration: 1, y: "-100%", ease: "bounce" });
+  gsap.from(".site-title", {
+    duration: 1,
+    y: "-100%",
+    ease: "bounce",
+    rotate: 180,
+  });
 </script>
