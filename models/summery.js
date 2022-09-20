@@ -11,49 +11,12 @@ const summerySchema = new Schema(
       type: String,
       required: true,
     },
-    itemName: {
+    date: {
       type: String,
       required: true,
     },
-    HS: {
+    ProductName: {
       type: String,
-      required: true,
-    },
-    puchaseVal: {
-      type: Number,
-      required: true,
-    },
-    unitPrice: {
-      type: Number,
-      required: true,
-    },
-    unitSalePrice: {
-      type: Number,
-      required: true,
-    },
-    salesVal: {
-      type: Number,
-      required: true,
-    },
-    vat: {
-      type: Number,
-      required: true,
-    },
-    rebate: {
-      type: Number,
-      required: true,
-    },
-    deposite: {
-      type: Number,
-      required: true,
-    },
-    opeing: {
-      type: Number,
-      required: true,
-    },
-    saleQuantity: {
-      type: Number,
-      required: true,
     },
   },
   { timestamps: true }
