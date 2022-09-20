@@ -91,6 +91,9 @@ h3 {
   margin: 10px 0;
   padding: 8px;
 }
+.bcb input[type="radio"] {
+  all: revert;
+}
 .bcb label {
   display: block;
   margin-top: 24px;
