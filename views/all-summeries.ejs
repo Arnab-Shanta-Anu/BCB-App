@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <p>all summeries for <%=company.name%></p>
+    <%if (summeries.length !== 0) { summeries.forEach((summery) => { %>
+    <ul>
+      <div class="single">
+        <a href="/summery/<%=summery._id%>">
+          <li>
+            <h3><%= company.name %></h3>
+            <br />
+            <p></p>
+          </li>
+        </a>
+      </div>
+    </ul>
+    <% }) } else {%>
+    <p>No summeries found...</p>
+    <% } %>
+    <div class="bcb"><a href="/summery/add/<%=company._id%>">Add New</a></div>
+    <%- include("./partials/footer.ejs") %>
+  </body>
+</html>

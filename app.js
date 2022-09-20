@@ -32,7 +32,7 @@ app.set("view engine", "ejs");
 app.get("/", (req, res) => {
   res.redirect("/company/all");
 });
-app.use("/company/summery", summeryRoute);
+app.use("/summery", summeryRoute);
 app.use("/company", companyRoute);
 app.use("/user", userRoute);
 app.use("/login", loginRoute);
