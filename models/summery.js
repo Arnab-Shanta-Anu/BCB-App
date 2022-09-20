@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const summerySchema = new Schema(
   {
-    companyName: {
+    companyId: {
       type: String,
       required: true,
     },

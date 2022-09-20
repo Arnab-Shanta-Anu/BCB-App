@@ -2,8 +2,8 @@
   <div class="site-title">
     <a href="/"
       ><h1>
-        <span><img src="/bcb-logo.PNG" alt="bcb-logo" srcset="" /></span
-        ><span class="logo">BCB App</span>
+        <span><img src="/bcb-logo.PNG" alt="bcb-logo" srcset="" /></span>
+        <div class="logo">BCB App</div>
       </h1></a
     >
     <p>total vat & tax solution</p>
@@ -13,3 +13,6 @@
     <li><a href="/login">login/register</a></li>
   </ul>
 </nav>
+<script>
+  gsap.from(".logo", { duration: 1, y: "-100%", ease: "bounce" });
+</script>

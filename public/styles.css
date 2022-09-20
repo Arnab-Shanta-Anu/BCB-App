@@ -41,11 +41,11 @@ nav li {
 nav h1 {
   font-family: "Bungee Spice", cursive;
   font-size: 3em;
-  
+
   transition: transform 2s ease-in-out;
 }
-nav h1:hover{
-  transform: scale(120%,120%);
+nav h1:hover {
+  transform: scale(120%, 120%);
 }
 nav p,
 nav a {
