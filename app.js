@@ -36,10 +36,14 @@ app.use("/register", registerRoute);
 app.get("/", (req, res) => {
   res.redirect("/company/all");
 });
-app.get("/search/:name", (req, res) => {
-  Company.find({ name: { $regex: req.params.name } })
+app.post("/search/:key", (req, res) => {
+  const searchKey = req.params.key;
+  Company.find({
+    name: { $regex: new RegExp("^" + searchKey, "i") },
+  })
+    .limit(10)
     .then((result) => {
-      res.send(result);
+      res.json(result);
     })
     .catch((err) => {
       console.log(err);

@@ -4,8 +4,8 @@
   <body>
     <%- include("./partials/nav.ejs") %>
     <p>all companies</p>
-    <input type="search" name="search" id="search" placeholder="Search by name">
-    <div class="result"></div>
+    <input type="text" id="search" placeholder="Search by name" onkeyup="search(this)">
+    <ul class="result"></ul>
     <%if (companies.length !== 0) { companies.forEach((company) => { %>
     <ul>
       <div class="single">
@@ -13,7 +13,7 @@
         <li>
           <h3><%= company.name %></>
           <br />
-          <p><%=company.ID%> <%=company.pass%></p>
+          <p><%=company.ID%></p>
         </li>
       </a>
     </div>
@@ -28,8 +28,25 @@
       let searchVal = document.getElementById("search");
       let result = document.querySelector(".result");
       //add fetch api call
+      function search(e){
+        fetch(`/search/${searchVal.value}`,{
+          method: "POST",
+        })
+        .then((response)=>{
+          response.json().then((data)=>{
+            if(data.length > 0){
+              result.innerHTML = "";
+              data.forEach(company => {
+                result.innerHTML +=`<li><a class="white" href="${company._id}">${company.name}</a></li>`;
+              });
+            }
+          })
+        })
+        .catch((err)=>{
+          console.log(err);
+        })
+      }
       
-    
     </script>
     </body>
 </html>
