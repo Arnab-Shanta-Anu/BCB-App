@@ -48,12 +48,32 @@ router.get("/:id", (req, res) => {
 
 //delete a company
 router.delete("/:id", (req, res) => {
-  res.send("company delete req");
+  const id = req.params.id;
+  Company.findByIdAndDelete(id)
+    .then((result) => {
+      res.json({
+        redirect: "/company/all",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
-
+router.get("/edit/:id", (req, res) => {
+  res.render("/add", { title: "Edit" });
+});
 //modify a company details
 router.put("/:id", (req, res) => {
-  res.send(`${req.params.id} modify req`);
+  const id = req.params.id;
+  Company.findById(id)
+    .then((result) => {
+      res.json({
+        redirect: "/company/all",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 module.exports = router;

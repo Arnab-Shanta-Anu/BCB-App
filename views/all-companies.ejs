@@ -5,6 +5,7 @@
     <%- include("./partials/nav.ejs") %>
     <p>all companies</p>
     <input type="search" name="search" id="search" placeholder="Search by name">
+    <div class="result"></div>
     <%if (companies.length !== 0) { companies.forEach((company) => { %>
     <ul>
       <div class="single">
@@ -20,11 +21,15 @@
     <% }) } else {%>
     <p>No companies found...</p>
     <% } %>
+    
     <div class="bcb"><a href="/company/add">Add New</a></div>
     <%- include("./partials/footer.ejs") %>    
     <script>
       let searchVal = document.getElementById("search");
+      let result = document.querySelector(".result");
       //add fetch api call
+      
+    
     </script>
     </body>
 </html>
