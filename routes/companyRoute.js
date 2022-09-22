@@ -60,15 +60,32 @@ router.delete("/:id", (req, res) => {
     });
 });
 router.get("/edit/:id", (req, res) => {
-  res.render("/add", { title: "Edit" });
+  Company.findById(req.params.id)
+    .then((result) => {
+      res.render("edit-company", { title: "Edit", company: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 //modify a company details
-router.put("/:id", (req, res) => {
+router.post("/edit", (req, res) => {
   const id = req.params.id;
-  Company.findById(id)
+  //delete then save new
+
+  Company.findByIdAndDelete(id)
+    .then((result) => {
+      console.log("record deleted");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  let company = new Company(req.body);
+  company
+    .save()
     .then((result) => {
       res.json({
-        redirect: "/company/all",
+        redirect: `/company/${id}`,
       });
     })
     .catch((err) => {

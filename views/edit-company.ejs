@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <p>edit company</p>
+    <div class="bcb">
+      <form action="/company/edit" method="post">
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value="<%=company.name%>"
+          required
+        />
+        <input
+          type="text"
+          id="address"
+          name="address"
+          value="<%=company.address%>"
+          required
+        />
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          value="<%=company.phone%>"
+          required
+        />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value="<%=company.email%>"
+        />
+        <input
+          type="text"
+          id="BIN"
+          name="BIN"
+          value="<%=company.BIN%>."
+          required
+        />
+        <input type="text" id="ID" name="ID" value="<%=company.ID%>" required />
+        <input
+          type="text"
+          id="pass"
+          name="pass"
+          value="<%=company.pass%>"
+          required
+        />
+        <input
+          type="text"
+          id="circle"
+          name="circle"
+          value="<%=company.circle%>"
+          required
+        />
+
+        <input type="radio" id="html" name="type" value="Importer"
+        <%=company.type === "Importer"? "checked": ""%>/>Importer <input
+        type="radio" id="css" name="type" value="Manufacturer" <%=company.type
+        === "Manufacturer"? "checked": ""%> />Manufacturer <input type="radio"
+        id="javascript" name="type" value="Local trader" <%=company.type ===
+        "Local trader"? "checked": ""%> />Local Trader<br />
+        <button type="submit">Update</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -22,15 +22,15 @@
       <p>type: <%=company.type%></p>
       <br />
     </div>
+    <div class="show"></div>
     <div class="bcb">
       <a href="/summery/all/<%=company._id%>">View Summeries</a>
       <a class="delete" data-company-id="<%=company._id%>">Delete</a>
-      <a class="edit" data-company-id="<%=company._id%>">Edit</a>
+      <a class="edit" href="/company/edit/<%=company._id%>">Edit</a>
     </div>
     <%- include("./partials/footer.ejs") %>
     <script>
       const deleteBtn = document.querySelector("a.delete");
-      const editBtn = document.querySelector("a.edit");
 
       deleteBtn.addEventListener("click", (e) => {
         const endpoint = `/company/${deleteBtn.dataset.companyId}`;
@@ -38,26 +38,9 @@
           method: "DELETE",
         })
           .then((response) => {
-            response.json();
-          })
-          .then((data) => {
-            window.location.href = data.redirect;
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      });
-
-      editBtn.addEventListener("click", (e) => {
-        const endpoint = `/company/${deleteBtn.dataset.companyId}`;
-        fetch(endpoint, {
-          method: "PUT",
-        })
-          .then((response) => {
-            response.json();
-          })
-          .then((data) => {
-            console.log(data);
+            response.json().then((data) => {
+              window.location.href = data.redirect;
+            });
           })
           .catch((err) => {
             console.log(err);
