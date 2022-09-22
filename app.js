@@ -29,15 +29,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //register view engine
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
-  res.redirect("/company/all");
-});
 app.use("/summery", summeryRoute);
 app.use("/company", companyRoute);
 app.use("/user", userRoute);
 app.use("/login", loginRoute);
 app.use("/register", registerRoute);
 
+//index->/company/all
+app.get("/", (req, res) => {
+  res.redirect("/company/all");
+});
+//admin
+app.get("/admin", (req, res) => {
+  res.render("admin", { title: "Admin" });
+});
 //404
 app.use((req, res) => {
   res.status(404).render("404", { title: "404", req });
