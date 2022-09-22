@@ -69,7 +69,7 @@ router.get("/edit/:id", (req, res) => {
     });
 });
 //modify a company details
-router.post("/edit", (req, res) => {
+router.post("/edit/:id", (req, res) => {
   const id = req.params.id;
   //delete then save new
 
@@ -80,13 +80,13 @@ router.post("/edit", (req, res) => {
     .catch((err) => {
       console.log(err);
     });
+
   let company = new Company(req.body);
   company
     .save()
     .then((result) => {
-      res.json({
-        redirect: `/company/${id}`,
-      });
+      console.log("new record created");
+      res.redirect("/company/all");
     })
     .catch((err) => {
       console.log(err);

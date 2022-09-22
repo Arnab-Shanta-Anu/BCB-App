@@ -5,7 +5,7 @@
     <%- include("./partials/nav.ejs") %>
     <p>edit company</p>
     <div class="bcb">
-      <form action="/company/edit" method="post">
+      <form action="/company/edit/<%=company._id%>" method="post">
         <input
           type="text"
           id="name"
