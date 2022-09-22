@@ -48,12 +48,49 @@ router.get("/:id", (req, res) => {
 
 //delete a company
 router.delete("/:id", (req, res) => {
-  res.send("company delete req");
+  const id = req.params.id;
+  Company.findByIdAndDelete(id)
+    .then((result) => {
+      res.json({
+        redirect: "/company/all",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
-
+router.get("/edit/:id", (req, res) => {
+  Company.findById(req.params.id)
+    .then((result) => {
+      res.render("edit-company", { title: "Edit", company: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 //modify a company details
-router.put("/:id", (req, res) => {
-  res.send(`${req.params.id} modify req`);
+router.post("/edit/:id", (req, res) => {
+  const id = req.params.id;
+  //delete then save new
+
+  Company.findByIdAndDelete(id)
+    .then((result) => {
+      console.log("record deleted");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  let company = new Company(req.body);
+  company
+    .save()
+    .then((result) => {
+      console.log("new record created");
+      res.redirect("/company/all");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 module.exports = router;

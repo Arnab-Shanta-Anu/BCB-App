@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const userRoute = require("./routes/userRoute");
@@ -8,7 +7,7 @@ const summeryRoute = require("./routes/summeryRoute");
 const loginRoute = require("./routes/loginRoute");
 const registerRoute = require("./routes/registerRoute");
 
-const User = require("./models/user");
+const Company = require("./models/company");
 
 const dbURI = "mongodb://localhost:27017/BCB-App";
 mongoose
@@ -24,8 +23,7 @@ mongoose
 const app = express();
 app.use(express.static("public"));
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(express.urlencoded({ extended: false }));
 //register view engine
 app.set("view engine", "ejs");
 
@@ -35,13 +33,21 @@ app.use("/user", userRoute);
 app.use("/login", loginRoute);
 app.use("/register", registerRoute);
 
-//index->/company/all
 app.get("/", (req, res) => {
   res.redirect("/company/all");
 });
-//admin
-app.get("/admin", (req, res) => {
-  res.render("admin", { title: "Admin" });
+app.post("/search/:key", (req, res) => {
+  const searchKey = req.params.key;
+  Company.find({
+    name: { $regex: new RegExp("^" + searchKey, "i") },
+  })
+    .limit(10)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 //404
 app.use((req, res) => {

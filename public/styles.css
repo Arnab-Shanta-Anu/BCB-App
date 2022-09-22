@@ -119,3 +119,17 @@ h3 {
   font-size: 1.2em;
   cursor: pointer;
 }
+#search {
+  float: right;
+  position: relative;
+}
+.result {
+  position: absolute;
+  right: 10%;
+  top: 45%;
+  background-color: #222;
+  color: white;
+}
+.white {
+  color: white;
+}
