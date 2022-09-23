@@ -74,9 +74,7 @@ router.post("/edit/:id", (req, res) => {
   //delete then save new
 
   Company.findByIdAndDelete(id)
-    .then((result) => {
-      console.log("record deleted");
-    })
+    .then((result) => {})
     .catch((err) => {
       console.log(err);
     });
@@ -85,7 +83,6 @@ router.post("/edit/:id", (req, res) => {
   company
     .save()
     .then((result) => {
-      console.log("new record created");
       res.redirect("/company/all");
     })
     .catch((err) => {
