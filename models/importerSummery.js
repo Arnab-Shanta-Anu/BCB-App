@@ -38,7 +38,11 @@ const importerSummerySchema = new Schema(
       type: Number,
       required: true,
     },
-    addition: {
+    additionRate: {
+      type: Number,
+      required: true,
+    },
+    additionVal: {
       type: Number,
       required: true,
     },

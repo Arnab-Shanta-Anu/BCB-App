@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <div class="bcb">
+      <form action="" method="post">
+        <label for="month">For the month:</label>
+        <input type="month" name="month" id="month" value="2022-09" />
+        <label for="BE">B/E no.</label>
+        <input type="text" name="BE" />
+        <label for="BEdate">B/E date</label>
+        <input type="date" name="BEdate" />
+        <label for="productName">Product Description</label>
+        <input type="text" name="productName" id="" />
+        <label for="quantity">Quantity</label>
+        <input type="text" name="quantity" id="" value="0" />
+        <label for="purchaseVal">Purchase value</label>
+        <input type="text" name="purchaseVal" id="" value="0" />
+        <label for="purchaseRate">Purchase Rate</label>
+        <input type="text" name="purchaseRate" id="" disabled />
+        <label for="additionRate">Addition Rate</label>
+        <input type="text" name="additionRate" id="" value="1" />
+        <label for="additionVal">Addition Value</label>
+        <input type="text" name="additionVal" id="" disabled />
+        <label for="salesRate">Sales Rate</label>
+        <input type="text" name="salesRate" id="" disabled />
+        <label for="salesVal">Sales Value</label>
+        <input type="text" name="salesVal" id="" disabled />
+        <label for="vatRate">VAT%</label>
+        <input type="text" name="vatRate" id="" value="0" />
+        <label for="vatVal">VAT Amount</label>
+        <input type="text" name="vatVal" id="" disabled />
+        <label for="rebate">Rebate 15%</label>
+        <input type="text" name="rebate" id="" disabled />
+        <label for="at">AT 5%</label>
+        <input type="text" name="at" id="" disabled />
+        <label for="trDeposite">TR Deposite</label>
+        <input type="text" name="trDeposite" id="" disabled />
+        <label for="openingStock">Opening Stock</label>
+        <input type="text" name="openingStock" id="" value="0" />
+        <label for="salesQty">Sales Quantity</label>
+        <input type="text" name="salesQty" id="" value="0" />
+        <label for="closingStock">Closing Stock</label>
+        <input type="text" name="closingStock" id="" disabled />
+        <label for="tr">TR</label>
+        <input type="text" name="tr" id="" disabled />
+        <label for="closingBal">Closing Balance(note 65)</label>
+        <input type="text" name="closingBal" id="" disabled />
+      </form>
+    </div>
+    <%- include("./partials/footer.ejs") %>
+    <script>
+      document.addEventListener("keypress", (e) => {
+        let quantity = document.querySelector('[name="quantity"]');
+        let purchaseVal = document.querySelector('[name="purchaseVal"]');
+        let purchaseRate = document.querySelector('[name="purchaseRate"]');
+        let additionRate = document.querySelector('[name="additionRate"]');
+        let additionVal = document.querySelector('[name="additionVal"]');
+        let salesRate = document.querySelector('[name="salesRate"]');
+        let salesVal = document.querySelector('[name="salesVal"]');
+        let vatRate = document.querySelector('[name="vatRate"]');
+        let vatVal = document.querySelector('[name="vatVal"]');
+        let rebate = document.querySelector('[name="rebate"]');
+        let at = document.querySelector('[name="at"]');
+        let trDeposite = document.querySelector('[name="trDeposite"]');
+        let openingStock = document.querySelector('[name="openingStock"]');
+        let salesQty = document.querySelector('[name="salesQty"]');
+        let closingStock = document.querySelector('[name="closingStock"]');
+        let tr = document.querySelector('[name="tr"]');
+        let closingBal = document.querySelector('[name="closingBal"]');
+
+        purchaseRate.value = purchaseVal.value / quantity.value;
+        additionVal.value = (purchaseRate.value * additionRate.value) / 100;
+        salesRate.value = purchaseRate.value + additionVal.value;
+        salesVal.value = salesRate.value * quantity.value;
+        vatVal.value = vatRate.value * salesVal.value;
+        rebate.value = (purchaseVal.value * 15) / 100;
+        at.value = (purchaseVal.value * 5) / 100;
+        trDeposite.value = vatVal.value - (rebate.value + at.value);
+        closingStock.value = openingStock.value - salesQty.value;
+        tr.value = (trDeposite.value / quantity.value) * salesQty;
+        closingBal.value =
+          ((rebate.value + at.value) / quantity.value) * closingStock.value;
+      });
+    </script>
+  </body>
+</html>
