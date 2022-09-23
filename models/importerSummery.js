@@ -86,7 +86,7 @@ const importerSummerySchema = new Schema(
       type: Number,
       required: true,
     },
-    closingBalance: {
+    closingBal: {
       type: Number,
       required: true,
     },
