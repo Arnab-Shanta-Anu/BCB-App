@@ -71,12 +71,14 @@
         let tr = document.querySelector('[name="tr"]');
         let closingBal = document.querySelector('[name="closingBal"]');
 
-        purchaseRate.value = purchaseVal.value / quantity.value;
-        additionVal.value = (purchaseRate.value * additionRate.value) / 100;
+        purchaseRate.value = parseFloat(purchaseVal.value / quantity.value);
+        additionVal.value = parseFloat(
+          (purchaseRate.value * additionRate.value) / 100
+        );
         salesRate.value =
           parseFloat(purchaseRate.value) + parseFloat(additionVal.value);
         salesVal.value = salesRate.value * quantity.value;
-        vatVal.value = vatRate.value * salesVal.value;
+        vatVal.value = (vatRate.value * salesVal.value) / 100;
         rebate.value = (purchaseVal.value * 15) / 100;
         at.value = (purchaseVal.value * 5) / 100;
         trDeposite.value =
@@ -85,13 +87,31 @@
         closingStock.value = openingStock.value - salesQty.value;
         tr.value =
           (parseFloat(trDeposite.value) / parseFloat(quantity.value)) *
-          parseFloat(salesQty);
+          parseFloat(salesQty.value);
 
         console.log(additionVal.value);
 
         closingBal.value =
           ((parseFloat(rebate.value) + parseFloat(at.value)) / quantity.value) *
           closingStock.value;
+
+        quantity.value = parseFloat(quantity.value).toFixed(2);
+        purchaseVal.value = parseFloat(purchaseVal.value).toFixed(2);
+        purchaseRate.value = parseFloat(purchaseRate.value).toFixed(2);
+        additionRate.value = parseFloat(additionRate.value).toFixed(2);
+        additionVal.value = parseFloat(additionVal.value).toFixed(2);
+        salesRate.value = parseFloat(salesRate.value).toFixed(2);
+        salesVal.value = parseFloat(salesVal.value).toFixed(2);
+        vatRate.value = parseFloat(vatRate.value).toFixed(2);
+        vatVal.value = parseFloat(vatVal.value).toFixed(2);
+        rebate.value = parseFloat(rebate.value).toFixed(2);
+        at.value = parseFloat(at.value).toFixed(2);
+        trDeposite.value = parseFloat(trDeposite.value).toFixed(2);
+        openingStock.value = parseFloat(openingStock.value).toFixed(2);
+        salesQty.value = parseFloat(salesQty.value).toFixed(2);
+        closingStock.value = parseFloat(closingStock.value).toFixed(2);
+        tr.value = parseFloat(tr.value).toFixed(2);
+        closingBal.value = parseFloat(closingBal.value).toFixed(2);
       }
     </script>
   </body>
