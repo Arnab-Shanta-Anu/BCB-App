@@ -14,44 +14,45 @@
         <label for="productName">Product Description</label>
         <input type="text" name="productName" id="" />
         <label for="quantity">Quantity</label>
-        <input type="text" name="quantity" id="" value="0" />
+        <input type="text" name="quantity" id="" value="1" />
         <label for="purchaseVal">Purchase value</label>
-        <input type="text" name="purchaseVal" id="" value="0" />
+        <input type="text" name="purchaseVal" id="" value="1" />
         <label for="purchaseRate">Purchase Rate</label>
-        <input type="text" name="purchaseRate" id="" disabled />
+        <input type="text" name="purchaseRate" id="" value="1" disabled />
         <label for="additionRate">Addition Rate</label>
         <input type="text" name="additionRate" id="" value="1" />
         <label for="additionVal">Addition Value</label>
-        <input type="text" name="additionVal" id="" disabled />
+        <input type="text" name="additionVal" id="" value="1" disabled />
         <label for="salesRate">Sales Rate</label>
-        <input type="text" name="salesRate" id="" disabled />
+        <input type="text" name="salesRate" id="" value="1" disabled />
         <label for="salesVal">Sales Value</label>
-        <input type="text" name="salesVal" id="" disabled />
+        <input type="text" name="salesVal" id="" value="1" disabled />
         <label for="vatRate">VAT%</label>
-        <input type="text" name="vatRate" id="" value="0" />
+        <input type="text" name="vatRate" id="" value="1" />
         <label for="vatVal">VAT Amount</label>
-        <input type="text" name="vatVal" id="" disabled />
+        <input type="text" name="vatVal" id="" value="1" disabled />
         <label for="rebate">Rebate 15%</label>
-        <input type="text" name="rebate" id="" disabled />
+        <input type="text" name="rebate" id="" value="1" disabled />
         <label for="at">AT 5%</label>
-        <input type="text" name="at" id="" disabled />
+        <input type="text" name="at" id="" value="1" disabled />
         <label for="trDeposite">TR Deposite</label>
-        <input type="text" name="trDeposite" id="" disabled />
+        <input type="text" name="trDeposite" id="" value="1" disabled />
         <label for="openingStock">Opening Stock</label>
-        <input type="text" name="openingStock" id="" value="0" />
+        <input type="text" name="openingStock" id="" value="1" />
         <label for="salesQty">Sales Quantity</label>
-        <input type="text" name="salesQty" id="" value="0" />
+        <input type="text" name="salesQty" id="" value="1" />
         <label for="closingStock">Closing Stock</label>
-        <input type="text" name="closingStock" id="" disabled />
+        <input type="text" name="closingStock" id="" value="1" disabled />
         <label for="tr">TR</label>
-        <input type="text" name="tr" id="" disabled />
+        <input type="text" name="tr" id="" value="1" disabled />
         <label for="closingBal">Closing Balance(note 65)</label>
-        <input type="text" name="closingBal" id="" disabled />
+        <input type="text" name="closingBal" id="" value="1" disabled />
       </form>
     </div>
+    <button class="green" onclick="calculate(this)">Calculate</button>
     <%- include("./partials/footer.ejs") %>
     <script>
-      document.addEventListener("keypress", (e) => {
+      function calculate(e) {
         let quantity = document.querySelector('[name="quantity"]');
         let purchaseVal = document.querySelector('[name="purchaseVal"]');
         let purchaseRate = document.querySelector('[name="purchaseRate"]');
@@ -72,17 +73,26 @@
 
         purchaseRate.value = purchaseVal.value / quantity.value;
         additionVal.value = (purchaseRate.value * additionRate.value) / 100;
-        salesRate.value = purchaseRate.value + additionVal.value;
+        salesRate.value =
+          parseFloat(purchaseRate.value) + parseFloat(additionVal.value);
         salesVal.value = salesRate.value * quantity.value;
         vatVal.value = vatRate.value * salesVal.value;
         rebate.value = (purchaseVal.value * 15) / 100;
         at.value = (purchaseVal.value * 5) / 100;
-        trDeposite.value = vatVal.value - (rebate.value + at.value);
+        trDeposite.value =
+          parseFloat(vatVal.value) -
+          (parseFloat(rebate.value) + parseFloat(at.value));
         closingStock.value = openingStock.value - salesQty.value;
-        tr.value = (trDeposite.value / quantity.value) * salesQty;
+        tr.value =
+          (parseFloat(trDeposite.value) / parseFloat(quantity.value)) *
+          parseFloat(salesQty);
+
+        console.log(additionVal.value);
+
         closingBal.value =
-          ((rebate.value + at.value) / quantity.value) * closingStock.value;
-      });
+          ((parseFloat(rebate.value) + parseFloat(at.value)) / quantity.value) *
+          closingStock.value;
+      }
     </script>
   </body>
 </html>
