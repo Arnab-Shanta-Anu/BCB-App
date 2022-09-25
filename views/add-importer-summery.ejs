@@ -3,116 +3,50 @@
   <%- include("./partials/head.ejs") %>
   <body>
     <%- include("./partials/nav.ejs") %>
-    <div class="bcb">
-      <form action="" method="post">
-        <label for="month">For the month:</label>
-        <input type="month" name="month" id="month" value="2022-09" />
-        <label for="BE">B/E no.</label>
-        <input type="text" name="BE" />
-        <label for="BEdate">B/E date</label>
-        <input type="date" name="BEdate" />
-        <label for="productName">Product Description</label>
-        <input type="text" name="productName" id="" />
-        <label for="quantity">Quantity</label>
-        <input type="text" name="quantity" id="" value="1" />
-        <label for="purchaseVal">Purchase value</label>
-        <input type="text" name="purchaseVal" id="" value="1" />
-        <label for="purchaseRate">Purchase Rate</label>
-        <input type="text" name="purchaseRate" id="" value="1" disabled />
-        <label for="additionRate">Addition Rate</label>
-        <input type="text" name="additionRate" id="" value="1" />
-        <label for="additionVal">Addition Value</label>
-        <input type="text" name="additionVal" id="" value="1" disabled />
-        <label for="salesRate">Sales Rate</label>
-        <input type="text" name="salesRate" id="" value="1" disabled />
-        <label for="salesVal">Sales Value</label>
-        <input type="text" name="salesVal" id="" value="1" disabled />
-        <label for="vatRate">VAT%</label>
-        <input type="text" name="vatRate" id="" value="1" />
-        <label for="vatVal">VAT Amount</label>
-        <input type="text" name="vatVal" id="" value="1" disabled />
-        <label for="rebate">Rebate 15%</label>
-        <input type="text" name="rebate" id="" value="1" disabled />
-        <label for="at">AT 5%</label>
-        <input type="text" name="at" id="" value="1" disabled />
-        <label for="trDeposite">TR Deposite</label>
-        <input type="text" name="trDeposite" id="" value="1" disabled />
-        <label for="openingStock">Opening Stock</label>
-        <input type="text" name="openingStock" id="" value="1" />
-        <label for="salesQty">Sales Quantity</label>
-        <input type="text" name="salesQty" id="" value="1" />
-        <label for="closingStock">Closing Stock</label>
-        <input type="text" name="closingStock" id="" value="1" disabled />
-        <label for="tr">TR</label>
-        <input type="text" name="tr" id="" value="1" disabled />
-        <label for="closingBal">Closing Balance(note 65)</label>
-        <input type="text" name="closingBal" id="" value="1" disabled />
-      </form>
+    <div class="side-by-side">
+      <h3>B/E No</h3>
+      <h3>Date</h3>
+      <h3>Product Description</h3>
+      <h3>HS Code</h3>
+      <h3>Purchase Value</h3>
+      <h3>Purchase Rate</h3>
+      <h3>Addition %</h3>
+      <h3>Sales Rate</h3>
+      <h3>Sales Value</h3>
+      <h3>VAT %</h3>
+      <h3>VAT Amount</h3>
+      <h3>Rebate 15%</h3>
+      <h3>AT 5%</h3>
+      <h3>TR Deposite</h3>
+      <h3>Opening Stock</h3>
+      <h3>Sales Quantity</h3>
+      <h3>Closing Stock</h3>
+      <h3>TR</h3>
+      <h3>Closing Balance (note 65)</h3>
+      <button id="add" class="green">Add</button>
     </div>
-    <button class="green" onclick="calculate(this)">Calculate</button>
+    <div id="addInput" class="addInput"></div>
     <%- include("./partials/footer.ejs") %>
     <script>
-      function calculate(e) {
-        let quantity = document.querySelector('[name="quantity"]');
-        let purchaseVal = document.querySelector('[name="purchaseVal"]');
-        let purchaseRate = document.querySelector('[name="purchaseRate"]');
-        let additionRate = document.querySelector('[name="additionRate"]');
-        let additionVal = document.querySelector('[name="additionVal"]');
-        let salesRate = document.querySelector('[name="salesRate"]');
-        let salesVal = document.querySelector('[name="salesVal"]');
-        let vatRate = document.querySelector('[name="vatRate"]');
-        let vatVal = document.querySelector('[name="vatVal"]');
-        let rebate = document.querySelector('[name="rebate"]');
-        let at = document.querySelector('[name="at"]');
-        let trDeposite = document.querySelector('[name="trDeposite"]');
-        let openingStock = document.querySelector('[name="openingStock"]');
-        let salesQty = document.querySelector('[name="salesQty"]');
-        let closingStock = document.querySelector('[name="closingStock"]');
-        let tr = document.querySelector('[name="tr"]');
-        let closingBal = document.querySelector('[name="closingBal"]');
+      const addBtn = document.getElementById("add");
+      const addInput = document.querySelector(".addInput");
+      let count = 0;
+      addBtn.addEventListener("click", (e) => {
+        let html = "";
 
-        purchaseRate.value = parseFloat(purchaseVal.value / quantity.value);
-        additionVal.value = parseFloat(
-          (purchaseRate.value * additionRate.value) / 100
-        );
-        salesRate.value =
-          parseFloat(purchaseRate.value) + parseFloat(additionVal.value);
-        salesVal.value = salesRate.value * quantity.value;
-        vatVal.value = (vatRate.value * salesVal.value) / 100;
-        rebate.value = (purchaseVal.value * 15) / 100;
-        at.value = (purchaseVal.value * 5) / 100;
-        trDeposite.value =
-          parseFloat(vatVal.value) -
-          (parseFloat(rebate.value) + parseFloat(at.value));
-        closingStock.value = openingStock.value - salesQty.value;
-        tr.value =
-          (parseFloat(trDeposite.value) / parseFloat(quantity.value)) *
-          parseFloat(salesQty.value);
+        html += "<div class='side-by-side'>";
+        html += `<div class='border'><input type='text' id='input${count}' style='width: 92px;'></div>`;
+        count++;
+        html += `<div class='border'><input type='date' id='input${count}' style='width: 98px;'></div>`;
+        count++;
+        for (let i = 0; i < 17; i++, count++) {
+          html += `<div class='border'><input type='text' id='input${count}' style='width: 92px;'></div>`;
+        }
 
-        console.log(additionVal.value);
-
-        closingBal.value =
-          ((parseFloat(rebate.value) + parseFloat(at.value)) / quantity.value) *
-          closingStock.value;
-
-        quantity.value = parseFloat(quantity.value).toFixed(2);
-        purchaseVal.value = parseFloat(purchaseVal.value).toFixed(2);
-        purchaseRate.value = parseFloat(purchaseRate.value).toFixed(2);
-        additionRate.value = parseFloat(additionRate.value).toFixed(2);
-        additionVal.value = parseFloat(additionVal.value).toFixed(2);
-        salesRate.value = parseFloat(salesRate.value).toFixed(2);
-        salesVal.value = parseFloat(salesVal.value).toFixed(2);
-        vatRate.value = parseFloat(vatRate.value).toFixed(2);
-        vatVal.value = parseFloat(vatVal.value).toFixed(2);
-        rebate.value = parseFloat(rebate.value).toFixed(2);
-        at.value = parseFloat(at.value).toFixed(2);
-        trDeposite.value = parseFloat(trDeposite.value).toFixed(2);
-        openingStock.value = parseFloat(openingStock.value).toFixed(2);
-        salesQty.value = parseFloat(salesQty.value).toFixed(2);
-        closingStock.value = parseFloat(closingStock.value).toFixed(2);
-        tr.value = parseFloat(tr.value).toFixed(2);
-        closingBal.value = parseFloat(closingBal.value).toFixed(2);
-      }
+        html += "</div>";
+        addInput.innerHTML += html;
+      });
+      document.addEventListener("keypress", (e) => {});
     </script>
   </body>
 </html>
