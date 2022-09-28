@@ -8,9 +8,11 @@
       <h3>Date</h3>
       <h3>Product Description</h3>
       <h3>HS Code</h3>
+      <h3>Quantity</h3>
       <h3>Purchase Value</h3>
       <h3>Purchase Rate</h3>
       <h3>Addition %</h3>
+      <h3>Addition Value</h3>
       <h3>Sales Rate</h3>
       <h3>Sales Value</h3>
       <h3>VAT %</h3>
@@ -27,26 +29,6 @@
     </div>
     <div id="addInput" class="addInput"></div>
     <%- include("./partials/footer.ejs") %>
-    <script>
-      const addBtn = document.getElementById("add");
-      const addInput = document.querySelector(".addInput");
-      let count = 0;
-      addBtn.addEventListener("click", (e) => {
-        let html = "";
-
-        html += "<div class='side-by-side'>";
-        html += `<div class='border'><input type='text' id='input${count}' style='width: 92px;'></div>`;
-        count++;
-        html += `<div class='border'><input type='date' id='input${count}' style='width: 98px;'></div>`;
-        count++;
-        for (let i = 0; i < 17; i++, count++) {
-          html += `<div class='border'><input type='text' id='input${count}' style='width: 92px;'></div>`;
-        }
-
-        html += "</div>";
-        addInput.innerHTML += html;
-      });
-      document.addEventListener("keypress", (e) => {});
-    </script>
+    <script src="/addImporterSummery.js"></script>
   </body>
 </html>
