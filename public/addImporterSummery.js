@@ -59,7 +59,7 @@ document.addEventListener("keyup", (e) => {
     let tr = ((trDeposite / quantity) * salesQty).toFixed(2);
     document.getElementById("input" + (19 + i * 21)).value = tr;
     let closingBal = (
-      (parseFloat(rebate) + parseFloat(at) / quantity) *
+      ((parseFloat(rebate) + parseFloat(at)) / quantity) *
       closingStock
     ).toFixed(2);
     document.getElementById("input" + (20 + i * 21)).value = closingBal;
