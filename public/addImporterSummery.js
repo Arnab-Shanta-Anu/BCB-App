@@ -14,27 +14,35 @@ addBtn.addEventListener("click", (e) => {
   let html = "";
   html += "<div class='side-by-side'>";
 
-  html += `<div class='border'><input type='text' id='BEno${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='BEno${count}' value='1' style='width: 92px;'></div>`;
   html += `<div class='border'><input type='date' id='date${count}' style='width: 98px;'></div>`;
-  html += `<div class='border'><input type='text' id='name${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='HScode${count}'  style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='Quantity${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='purchaseVal${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='purchaseRate${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='additionRate${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='additionVal${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='salesRate${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='salesVal${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='vatRate${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='vatVal${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='rebate${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='at${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='trDeposite${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='openingStock${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='salesQty${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='closingStock${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='tr${count}' style='width: 92px;'></div>`;
-  html += `<div class='border'><input type='text' id='closingBal${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='name${count}' value='1' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='HScode${count}'  value='1' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='quantity${count}' value='1' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='purchaseVal${count}' value='1' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='purchaseRate${count}' style='width: 92px;' disabled></div>`;
+  html += `<div class='border'><input type='text' id='additionRate${count}' value='1' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='additionVal${count}' style='width: 92px;' disabled></div>`;
+  html += `<div class='border'><input type='text' id='salesRate${count}' style='width: 92px;' disabled></div>`;
+  html += `<div class='border'><input type='text' id='salesVal${count}' style='width: 92px;' disabled></div>`;
+  //make vat rate a dropdown
+  html += `<div class='border'><select id='vatRate${count}' style='width: 92px;'></div>`;
+  html += "<option value='volvo'>Volvo</option>";
+  html += "<option value='saab'>Saab</option>";
+  html += "<option value='mercedes'>Mercedes</option>";
+  html += "<option value='audi'>Audi</option>";
+  html += `<div class='border'><input type='text' id='vatVal${count}' style='width: 92px; display: none' disabled></div>`;
+
+  // html += "</div>";
+  html += `<div class='border'><input type='text' id='vatVal${count}' style='width: 92px;' disabled></div>`;
+  html += `<div class='border'><input type='text' id='rebate${count}' style='width: 92px;' disabled></div>`;
+  html += `<div class='border'><input type='text' id='at${count}' style='width: 92px;' disabled></div>`;
+  html += `<div class='border'><input type='text' id='trDeposite${count}' style='width: 92px;' disabled></div>`;
+  html += `<div class='border'><input type='text' id='openingStock${count}' value='1' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='salesQty${count}' value='1' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='closingStock${count}' style='width: 92px;' disabled></div>`;
+  html += `<div class='border'><input type='text' id='tr${count}' style='width: 92px;' disabled></div>`;
+  html += `<div class='border'><input type='text' id='closingBal${count}' style='width: 92px;' disabled></div>`;
 
   html += "</div>";
   addInput.innerHTML += html;
@@ -82,10 +90,10 @@ document.addEventListener("keyup", (e) => {
       salesQty
     ).toFixed(2);
     document.getElementById(`closingStock${i}`).value = closingStock;
-    let tr = ((trDeposite / nonZero(quantity)) * salesQty).toFixed(2);
+    let tr = ((trDeposite / notZero(quantity)) * salesQty).toFixed(2);
     document.getElementById(`tr${i}`).value = tr;
     let closingBal = (
-      ((parseFloat(rebate) + parseFloat(at)) / quantity) *
+      ((parseFloat(rebate) + parseFloat(at)) / notZero(quantity)) *
       closingStock
     ).toFixed(2);
     document.getElementById(`closingBal${i}`).value = closingBal;
