@@ -1,121 +1,128 @@
 const addBtn = document.getElementById("add");
 const addInput = document.querySelector(".addInput");
+
+function notZero(number) {
+  number = +number;
+  if (number === 0 || number == NaN) {
+    number = 1;
+  }
+  return number;
+}
+
 let count = 0;
 addBtn.addEventListener("click", (e) => {
   let html = "";
   html += "<div class='side-by-side'>";
-  html += `<div class='border'><input type='text' id='input${count}' value='1' style='width: 92px;'></div>`;
-  count++;
-  html += `<div class='border'><input type='date' id='input${count}' style='width: 98px;'></div>`;
-  count++;
-  for (let i = 0; i < 19; i++, count++) {
-    html += `<div class='border'><input type='text' id='input${count}' value='1' style='width: 92px;'></div>`;
-  }
+
+  html += `<div class='border'><input type='text' id='BEno${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='date' id='date${count}' style='width: 98px;'></div>`;
+  html += `<div class='border'><input type='text' id='name${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='HScode${count}'  style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='Quantity${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='purchaseVal${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='purchaseRate${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='additionRate${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='additionVal${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='salesRate${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='salesVal${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='vatRate${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='vatVal${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='rebate${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='at${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='trDeposite${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='openingStock${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='salesQty${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='closingStock${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='tr${count}' style='width: 92px;'></div>`;
+  html += `<div class='border'><input type='text' id='closingBal${count}' style='width: 92px;'></div>`;
+
   html += "</div>";
   addInput.innerHTML += html;
+  count++;
 });
 document.addEventListener("keyup", (e) => {
   for (let i = 0; i < count / 21; i++) {
-    let BEno = document.getElementById("input" + (0 + i * 21)).value;
-    let date = document.getElementById("input" + (1 + i * 21)).value;
-    let name = document.getElementById("input" + (2 + i * 21)).value;
-    let HScode = document.getElementById("input" + (3 + i * 21)).value;
+    let BEno = document.getElementById(`BEno${i}`).value;
+    let date = document.getElementById(`date${i}`).value;
+    let name = document.getElementById(`name${i}`).value;
+    let HScode = document.getElementById(`HScode${i}`).value;
 
-    let quantity = document.getElementById("input" + (4 + i * 20)).value;
-    let purchaseVal = document.getElementById("input" + (5 + i * 21)).value;
-    let purchaseRate = (purchaseVal / parseFloat(quantity)).toFixed(2);
-    document.getElementById("input" + (6 + i * 20)).value = purchaseRate;
-    let additionRate = document.getElementById("input" + (7 + i * 21)).value;
+    let quantity = document.getElementById(`quantity${i}`).value;
+    let purchaseVal = document.getElementById(`purchaseVal${i}`).value;
+    let purchaseRate = (purchaseVal / notZero(parseFloat(quantity))).toFixed(2);
+    document.getElementById(`purchaseRate${i}`).value = purchaseRate;
+    let additionRate = document.getElementById(`additionRate${i}`).value;
     let additionVal = (
       parseFloat(purchaseRate) +
       (purchaseRate * additionRate) / 100
     ).toFixed(2);
-    document.getElementById("input" + (8 + i * 21)).value = additionVal;
+    document.getElementById(`additionVal${i}`).value = additionVal;
     let salesRate = (
       parseFloat(purchaseRate) + parseFloat(additionVal)
     ).toFixed(2);
-    document.getElementById("input" + (9 + i * 21)).value = salesRate;
+    document.getElementById(`salesRate${i}`).value = salesRate;
     let salesVal = (salesRate * quantity).toFixed(2);
-    document.getElementById("input" + (10 + i * 21)).value = salesVal;
-    let vatRate = document.getElementById("input" + (11 + i * 21)).value;
+    document.getElementById(`salesVal${i}`).value = salesVal;
+    let vatRate = document.getElementById(`vatRate${i}`).value;
     let vatVal = ((salesVal * vatRate) / 100).toFixed(2);
-    document.getElementById("input" + (12 + i * 21)).value = vatVal;
+    document.getElementById(`vatVal${i}`).value = vatVal;
     let rebate = ((purchaseVal * 15) / 100).toFixed(2);
-    document.getElementById("input" + (13 + i * 21)).value = rebate;
+    document.getElementById(`rebate${i}`).value = rebate;
     let at = ((purchaseVal * 5) / 100).toFixed(2);
-    document.getElementById("input" + (14 + i * 21)).value = at;
+    document.getElementById(`at${i}`).value = at;
     let trDeposite = (vatVal - (parseFloat(rebate) + parseFloat(at))).toFixed(
       2
     );
-    document.getElementById("input" + (15 + i * 21)).value = trDeposite;
-    let openingStock = document.getElementById("input" + (16 + i * 21)).value;
-    let salesQty = document.getElementById("input" + (17 + i * 21)).value;
+    document.getElementById(`trDeposite${i}`).value = trDeposite;
+    let openingStock = document.getElementById(`openingStock${i}`).value;
+    let salesQty = document.getElementById(`salesQty${i}`).value;
     let closingStock = (
       parseFloat(quantity) +
       parseFloat(openingStock) -
       salesQty
     ).toFixed(2);
-    document.getElementById("input" + (18 + i * 21)).value = closingStock;
-    let tr = ((trDeposite / quantity) * salesQty).toFixed(2);
-    document.getElementById("input" + (19 + i * 21)).value = tr;
+    document.getElementById(`closingStock${i}`).value = closingStock;
+    let tr = ((trDeposite / nonZero(quantity)) * salesQty).toFixed(2);
+    document.getElementById(`tr${i}`).value = tr;
     let closingBal = (
       ((parseFloat(rebate) + parseFloat(at)) / quantity) *
       closingStock
     ).toFixed(2);
-    document.getElementById("input" + (20 + i * 21)).value = closingBal;
+    document.getElementById(`closingBal${i}`).value = closingBal;
+
     //saving values
-    document.getElementById("input" + (0 + i * 21)).setAttribute("value", BEno);
-    document.getElementById("input" + (1 + i * 21)).setAttribute("value", date);
-    document.getElementById("input" + (2 + i * 21)).setAttribute("value", name);
+    document.getElementById(`BEno${i}`).setAttribute("value", BEno);
+    document.getElementById(`date${i}`).setAttribute("value", date);
+    document.getElementById(`name${i}`).setAttribute("value", name);
+    document.getElementById(`HScode${i}`).setAttribute("value", HScode);
+    document.getElementById(`quantity${i}`).setAttribute("value", quantity);
     document
-      .getElementById("input" + (3 + i * 21))
-      .setAttribute("value", HScode);
-    document
-      .getElementById("input" + (4 + i * 21))
-      .setAttribute("value", quantity);
-    document
-      .getElementById("input" + (5 + i * 21))
+      .getElementById(`purchaseVal${i}`)
       .setAttribute("value", purchaseVal);
     document
-      .getElementById("input" + (6 + i * 21))
+      .getElementById(`purchaseRate${i}`)
       .setAttribute("value", purchaseRate);
     document
-      .getElementById("input" + (7 + i * 21))
+      .getElementById(`additionRate${i}`)
       .setAttribute("value", additionRate);
     document
-      .getElementById("input" + (8 + i * 21))
+      .getElementById(`additionVal${i}`)
       .setAttribute("value", additionVal);
+    document.getElementById(`salesRate${i}`).setAttribute("value", salesRate);
+    document.getElementById(`salesVal${i}`).setAttribute("value", salesVal);
+    document.getElementById(`vatRate${i}`).setAttribute("value", vatRate);
+    document.getElementById(`vatVal${i}`).setAttribute("value", vatVal);
+    document.getElementById(`rebate${i}`).setAttribute("value", rebate);
+    document.getElementById(`at${i}`).setAttribute("value", at);
+    document.getElementById(`trDeposite${i}`).setAttribute("value", trDeposite);
     document
-      .getElementById("input" + (9 + i * 21))
-      .setAttribute("value", salesRate);
-    document
-      .getElementById("input" + (10 + i * 21))
-      .setAttribute("value", salesVal);
-    document
-      .getElementById("input" + (11 + i * 21))
-      .setAttribute("value", vatRate);
-    document
-      .getElementById("input" + (12 + i * 21))
-      .setAttribute("value", vatVal);
-    document
-      .getElementById("input" + (13 + i * 21))
-      .setAttribute("value", rebate);
-    document.getElementById("input" + (14 + i * 21)).setAttribute("value", at);
-    document
-      .getElementById("input" + (15 + i * 21))
-      .setAttribute("value", trDeposite);
-    document
-      .getElementById("input" + (16 + i * 21))
+      .getElementById(`openingStock${i}`)
       .setAttribute("value", openingStock);
+    document.getElementById(`salesQty${i}`).setAttribute("value", salesQty);
     document
-      .getElementById("input" + (17 + i * 21))
-      .setAttribute("value", salesQty);
-    document
-      .getElementById("input" + (18 + i * 21))
+      .getElementById(`closingStock${i}`)
       .setAttribute("value", closingStock);
-    document.getElementById("input" + (19 + i * 21)).setAttribute("value", tr);
-    document
-      .getElementById("input" + (20 + i * 21))
-      .setAttribute("value", closingBal);
+    document.getElementById(`tr${i}`).setAttribute("value", tr);
+    document.getElementById(`closingBal${i}`).setAttribute("value", closingBal);
   }
 });
