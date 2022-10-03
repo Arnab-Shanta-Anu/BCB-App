@@ -62,7 +62,13 @@ router.get("/all/:companyId", (req, res) => {
 
 //view add summery page
 router.get("/add/:companyId", (req, res) => {
-  res.render("add-importer-summery", { title: "summery" });
+  Company.findById(req.params.companyId)
+    .then((result) => {
+      res.render("add-importer-summery", { title: "summery", company: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 //add summery

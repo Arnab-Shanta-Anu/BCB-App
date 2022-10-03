@@ -4,6 +4,19 @@
   <body>
     <%- include("./partials/nav.ejs") %>
     <div class="side-by-side">
+      <div class="elem1">
+        <h2><%=company.name%></h2>
+      </div>
+      <label for="month">Summary for the month</label>
+      <input
+        type="month"
+        name="month"
+        id="month"
+        value="2022-10"
+        style="height: 30px"
+      />
+    </div>
+    <div class="side-by-side">
       <h3>B/E No</h3>
       <h3>Date</h3>
       <h3>Product Description</h3>
@@ -17,7 +30,7 @@
       <h3>Sales Value</h3>
       <h3>VAT %</h3>
       <h3>VAT Amount</h3>
-      <h3>Rebate 15%</h3>
+      <h3>Rebate</h3>
       <h3>AT 5%</h3>
       <h3>TR Deposite</h3>
       <h3>Opening Stock</h3>
