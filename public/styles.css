@@ -150,26 +150,3 @@ h3 {
   font-size: 1.2em;
   cursor: pointer;
 }
-.side-by-side {
-  display: flex;
-  flex-grow: 1;
-}
-.side-by-side h3 {
-  padding: 5px;
-  border: solid black 1px;
-  justify-content: center;
-  align-items: center;
-  font-size: 1em;
-  min-width: 100px;
-}
-.side-by-side input {
-  /* width: 80px; */
-  font-size: 1em;
-}
-.border {
-  border: solid black 1px;
-  padding: 5px;
-}
-.elem1 {
-  flex-grow: 1;
-}
