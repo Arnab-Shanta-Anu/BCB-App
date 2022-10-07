@@ -66,7 +66,7 @@ function saveValue(i, fields) {
   sessionStorage.setItem(`rebate${i}`, fields.rebate);
   sessionStorage.setItem(`at${i}`, fields.at);
   sessionStorage.setItem(`trDeposite${i}`, fields.trDeposite);
-  sessionStorage.setItem(`$openingStock{i}`, fields.openingStock);
+  sessionStorage.setItem(`$openingStock${i}`, fields.openingStock);
   sessionStorage.setItem(`salesQty${i}`, fields.salesQty);
   sessionStorage.setItem(`closingStock${i}`, fields.closingStock);
   sessionStorage.setItem(`tr${i}`, fields.tr);
@@ -166,7 +166,6 @@ document.addEventListener("keyup", (e) => {
     document.getElementById(`salesVal${i}`).value = salesVal;
     let dropdown = document.getElementById(`vatRate${i}`);
     let vatRate = dropdown.value;
-    console.log(vatRate);
 
     let vatVal = ((salesVal * vatRate) / 100).toFixed(2);
     document.getElementById(`vatVal${i}`).value = vatVal;
@@ -182,6 +181,7 @@ document.addEventListener("keyup", (e) => {
     );
     document.getElementById(`trDeposite${i}`).value = trDeposite;
     let openingStock = document.getElementById(`openingStock${i}`).value;
+    console.log(openingStock);
     let salesQty = document.getElementById(`salesQty${i}`).value;
     let closingStock = (
       parseFloat(quantity) +
