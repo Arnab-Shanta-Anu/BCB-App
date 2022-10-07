@@ -49,7 +49,7 @@ function addFields() {
   html += "</div>";
   return html;
 }
-let dropdown = document.querySelector()
+let dropdown = document.querySelector("select");
 addBtn.addEventListener("click", (e) => {
   addInput.innerHTML += addFields();
   count++;
@@ -108,6 +108,7 @@ document.addEventListener("keyup", (e) => {
     document.getElementById(`closingBal${i}`).value = closingBal;
 
     //saving values using session storage
+    saveValues();
     sessionStorage.setItem(`BEno${i}`, BEno);
     sessionStorage.setItem(`date${i}`, date);
     sessionStorage.setItem(`name${i}`, name);
