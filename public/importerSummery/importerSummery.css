@@ -4,11 +4,15 @@
 }
 input[type="date"] {
   width: 108px;
-  display: flex;
+  display: block;
   flex-direction: row;
 }
+input[type="month"] {
+  width: 150px;
+  font-size: 1.2em;
+}
 select {
-  width: 110px;
+  min-width: 110px;
 }
 .side-by-side {
   display: flex;
