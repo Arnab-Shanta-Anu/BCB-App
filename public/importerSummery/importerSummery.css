@@ -1,0 +1,26 @@
+.side-by-side input {
+  width: 104px;
+  font-size: 1em;
+}
+input[type="date"] {
+  width: 108px;
+  display: flex;
+  flex-direction: row;
+}
+select {
+  width: 110px;
+}
+.side-by-side {
+  display: flex;
+}
+.side-by-side h3 {
+  padding: 5px;
+  border: solid black 1px;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  min-width: 100px;
+}
+.elem1 {
+  flex-grow: 1;
+}
