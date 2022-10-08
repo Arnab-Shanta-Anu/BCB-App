@@ -27,7 +27,7 @@ function addFields() {
 
   const purchaseVal = document.createElement("input");
   purchaseVal.type = "text";
-  purchaseVal.id = "purchaseVa" + count;
+  purchaseVal.id = "purchaseVal" + count;
 
   const purchaseRate = document.createElement("input");
   purchaseRate.type = "text";
@@ -51,6 +51,7 @@ function addFields() {
 
   const vatWrapper = document.createElement("div");
   const vatRate = document.createElement("select");
+  vatRate.id = "vatRate" + count;
   const options = ["0", "5", "7.5", "10", "15"];
   options.forEach((optn) => {
     let option = document.createElement("option");
@@ -125,27 +126,28 @@ function addFields() {
 }
 function calculate() {
   for (let i = 0; i < count; i++) {
-    let BEno = document.getElementById(`BEno${count}`);
-    let date = document.getElementById(`date${count}`);
-    let name = document.getElementById(`name${count}`);
-    let HScode = document.getElementById(`HScode${count}`);
-    let quantity = document.getElementById(`quantity${count}`);
-    let purchaseVal = document.getElementById(`purchaseVal${count}`);
-    let purchaseRate = document.getElementById(`purchaseRate${count}`);
-    let additionRate = document.getElementById(`additionRate${count}`);
-    let additionVal = document.getElementById(`additionVal${count}`);
-    let salesRate = document.getElementById(`salesRate${count}`);
-    let salesVal = document.getElementById(`salesVal${count}`);
-    let vatRate = document.getElementById(`vatRate${count}`);
-    let vatVal = document.getElementById(`vatVal${count}`);
-    let rebate = document.getElementById(`rebate${count}`);
-    let at = document.getElementById(`at${count}`);
-    let trDeposite = document.getElementById(`trDeposite${count}`);
-    let openingStock = document.getElementById(`openingStock${count}`);
-    let salesQty = document.getElementById(`salesQty${count}`);
-    let closingStock = document.getElementById(`closingStock${count}`);
-    let tr = document.getElementById(`tr${count}`);
-    let closingBal = document.getElementById(`closingBal${count}`);
+    let BEno = document.getElementById("BEno" + i);
+    console.log(BEno);
+    let date = document.getElementById(`date${i}`);
+    let name = document.getElementById(`name${i}`);
+    let HScode = document.getElementById(`HScode${i}`);
+    let quantity = document.getElementById(`quantity${i}`);
+    let purchaseVal = document.getElementById(`purchaseVal${i}`);
+    let purchaseRate = document.getElementById(`purchaseRate${i}`);
+    let additionRate = document.getElementById(`additionRate${i}`);
+    let additionVal = document.getElementById(`additionVal${i}`);
+    let salesRate = document.getElementById(`salesRate${i}`);
+    let salesVal = document.getElementById(`salesVal${i}`);
+    let vatRate = document.getElementById(`vatRate${i}`);
+    let vatVal = document.getElementById(`vatVal${i}`);
+    let rebate = document.getElementById(`rebate${i}`);
+    let at = document.getElementById(`at${i}`);
+    let trDeposite = document.getElementById(`trDeposite${i}`);
+    let openingStock = document.getElementById(`openingStock${i}`);
+    let salesQty = document.getElementById(`salesQty${i}`);
+    let closingStock = document.getElementById(`closingStock${i}`);
+    let tr = document.getElementById(`tr${i}`);
+    let closingBal = document.getElementById(`closingBal${i}`);
 
     BEno = BEno.value;
     date = date.value;

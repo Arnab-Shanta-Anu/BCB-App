@@ -4,8 +4,8 @@
 }
 input[type="date"] {
   width: 108px;
-  display: block;
-  flex-direction: row;
+  padding: 5px 0;
+  font-size: 1.1em;
 }
 input[type="month"] {
   width: 150px;
@@ -13,6 +13,8 @@ input[type="month"] {
 }
 select {
   min-width: 110px;
+  font-size: 1.2em;
+  padding: 5px 0;
 }
 .side-by-side {
   display: flex;
