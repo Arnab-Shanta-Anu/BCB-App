@@ -2,6 +2,13 @@ const addBtn = document.getElementById("add");
 const addInp = document.getElementById("addInput");
 let count = 0;
 
+function notZero(number) {
+  number = +number;
+  if (number === 0 || number == NaN || number == null) {
+    number = 1;
+  }
+  return number;
+}
 function addFields() {
   const BEno = document.createElement("input");
   BEno.type = "text";
@@ -31,6 +38,7 @@ function addFields() {
 
   const purchaseRate = document.createElement("input");
   purchaseRate.type = "text";
+  purchaseRate.disabled = true;
   purchaseRate.id = "purchaseRate" + count;
 
   const additionRate = document.createElement("input");
@@ -39,7 +47,9 @@ function addFields() {
 
   const additionVal = document.createElement("input");
   additionVal.type = "text";
+  additionVal.disabled = true;
   additionVal.id = "additionVal" + count;
+  additionVal.value = "1";
 
   const salesRate = document.createElement("input");
   salesRate.type = "text";
@@ -64,7 +74,7 @@ function addFields() {
 
   const vatVal = document.createElement("input");
   vatVal.type = "text";
-  vatVal.id = "" + count;
+  vatVal.id = "vatVal" + count;
 
   const rebate = document.createElement("input");
   rebate.type = "text";
@@ -96,7 +106,7 @@ function addFields() {
 
   const closingBal = document.createElement("input");
   closingBal.type = "text";
-  closingBal.id = "closigBal" + count;
+  closingBal.id = "closingBal" + count;
 
   const container = document.createElement("div");
   container.className = "side-by-side";
@@ -127,10 +137,9 @@ function addFields() {
 function calculate() {
   for (let i = 0; i < count; i++) {
     let BEno = document.getElementById("BEno" + i);
-    console.log(BEno);
-    let date = document.getElementById(`date${i}`);
-    let name = document.getElementById(`name${i}`);
-    let HScode = document.getElementById(`HScode${i}`);
+    let date = document.getElementById("date" + i);
+    let name = document.getElementById("name" + i);
+    let HScode = document.getElementById("HScode" + i);
     let quantity = document.getElementById(`quantity${i}`);
     let purchaseVal = document.getElementById(`purchaseVal${i}`);
     let purchaseRate = document.getElementById(`purchaseRate${i}`);
@@ -149,45 +158,54 @@ function calculate() {
     let tr = document.getElementById(`tr${i}`);
     let closingBal = document.getElementById(`closingBal${i}`);
 
-    BEno = BEno.value;
-    date = date.value;
-    name = name.value;
-    HScode = HScode.value;
+    BEno = notZero(BEno.value);
+    date = notZero(date.value);
+    name = notZero(name.value);
+    HScode = notZero(HScode.value);
 
-    quantity = quantity.value;
-    purchaseVal = purchaseVal.value;
+    quantity = notZero(quantity.value);
+    purchaseVal = notZero(purchaseVal.value);
     purchaseRate.value = (purchaseVal / notZero(parseFloat(quantity))).toFixed(
       2
     );
-    additionRate = additionRate.value;
+    purchaseRate = purchaseRate.value;
+    additionRate = notZero(additionRate.value);
+
     additionVal.value = (
       parseFloat(purchaseRate) +
-      (purchaseRate * additionRate) / 100
+      parseFloat(purchaseRate * additionRate) / 100
     ).toFixed(2);
-    salesRate.value = (
-      parseFloat(purchaseRate) + parseFloat(additionVal)
-    ).toFixed(2);
+
+    salesRate.value = parseFloat(purchaseRate + Number(additionVal)).toFixed(2);
+    salesRate = salesRate.value;
     salesVal.value = (salesRate * quantity).toFixed(2);
+    salesVal = salesVal.value;
     let dropdown = document.getElementById(`vatRate${i}`);
     vatRate.value = dropdown.value;
-
+    vatRate = vatRate.value;
     vatVal.value = ((salesVal * vatRate) / 100).toFixed(2);
     rebate.value =
       vatRate === 15
         ? ((purchaseVal * 15) / 100).toFixed(2)
         : ((purchaseVal * 5) / 100).toFixed(2);
+
     at.value = ((purchaseVal * 5) / 100).toFixed(2);
+    vatVal = vatVal.value;
+    rebate = rebate.value;
+    at = at.value;
     trDeposite.value = (vatVal - (parseFloat(rebate) + parseFloat(at))).toFixed(
       2
     );
-    openingStock = openingStock.value;
-    salesQty = salesQty.value;
+    openingStock = notZero(openingStock.value);
+    salesQty = notZero(salesQty.value);
     closingStock.value = (
       parseFloat(quantity) +
       parseFloat(openingStock) -
       salesQty
     ).toFixed(2);
+    trDeposite = trDeposite.value;
     tr.value = ((trDeposite / notZero(quantity)) * salesQty).toFixed(2);
+    closingStock = closingStock.value;
     closingBal.value = (
       ((parseFloat(rebate) + parseFloat(at)) / notZero(quantity)) *
       closingStock
