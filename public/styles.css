@@ -143,9 +143,7 @@ h3 {
 }
 .green {
   background: rgb(42, 222, 42);
-  margin-top: 20px;
   color: white;
-  padding: 6px;
   border: 0;
   font-size: 1.2em;
   cursor: pointer;

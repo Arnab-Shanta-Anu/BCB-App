@@ -3,7 +3,7 @@
   <%- include("./partials/head.ejs") %>
   <body>
     <%- include("./partials/nav.ejs") %>
-    <p>all summeries for <%=company.name%></p>
+    <h2>All summaries for <%=company.name%></h2>
     <%if (summeries.length !== 0) { summeries.forEach((summery) => { %>
     <ul>
       <div class="single">
@@ -11,7 +11,7 @@
           <li>
             <h3><%= company.name %></h3>
             <br />
-            <p></p>
+            <p><%=summery.month%>-<%=summery.year%></p>
           </li>
         </a>
       </div>

@@ -73,11 +73,28 @@ router.get("/add/:companyId", (req, res) => {
 
 //add summery
 router.post("/add/:companyId", (req, res) => {
-  res.render("add-importer-summery", { title: "Add Summery" });
+  console.log("post req hit");
+  let importerSummery = new ImporterSummery(req.body);
+  importerSummery
+    .save()
+    .then((response) => {
+      res.json({
+        redirect: "/summery/all/" + req.params.companyId,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
-//view summery
+//view single summery
 router.get("/:summeryId", (req, res) => {
-  res.render("summery", { title: "summery" });
+  ImporterSummery.findById(req.params.summeryId)
+    .then((response) => {
+      res.render("summery", { title: "summery", summery: response });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 //delete summery

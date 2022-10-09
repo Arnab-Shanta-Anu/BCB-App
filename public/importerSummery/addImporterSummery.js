@@ -185,7 +185,7 @@ function calculate() {
     vatRate = vatRate.value;
     vatVal.value = ((salesVal * vatRate) / 100).toFixed(2);
     rebate.value =
-      vatRate === 15
+      vatRate === "15"
         ? ((purchaseVal * 15) / 100).toFixed(2)
         : ((purchaseVal * 5) / 100).toFixed(2);
 
