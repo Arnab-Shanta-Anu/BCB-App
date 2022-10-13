@@ -3,7 +3,38 @@
   <%- include("./partials/head.ejs") %>
   <body>
     <%- include("./partials/nav.ejs") %>
+
     <h2><%=summery.month%>-<%=summery.year%></h2>
-    <%- include("./partials/footer.ejs") %>
+    <div class="side-by-side">
+      <h3>B/E No</h3>
+      <h3>Date</h3>
+      <h3>Product Description</h3>
+      <h3>HS Code</h3>
+      <h3>Quantity</h3>
+      <h3>Purchase Value</h3>
+      <h3>Purchase Rate</h3>
+      <h3>Addition %</h3>
+      <h3>Addition Value</h3>
+      <h3>Sales Rate</h3>
+      <h3>Sales Value</h3>
+      <h3>VAT %</h3>
+      <h3>VAT Amount</h3>
+      <h3>Rebate</h3>
+      <h3>AT 5%</h3>
+      <h3>TR Deposite</h3>
+      <h3>Opening Stock</h3>
+      <h3>Sales Quantity</h3>
+      <h3>Closing Stock</h3>
+      <h3>TR</h3>
+      <h3>Closing Balance (note 65)</h3>
+    </div>
+    <div class="side-by-side">
+      <button class="green">edit</button>
+      <div class="bcb">
+        <a href="#">delete</a>
+      </div>
+    </div>
+    <%summery.info.forEach((x)=>{%> <%})%> <%- include("./partials/footer.ejs")
+    %>
   </body>
 </html>

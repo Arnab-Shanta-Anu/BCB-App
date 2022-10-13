@@ -53,46 +53,47 @@
         let month = document.getElementById("month").value;
         month = month.split("-");
         const url = "/summery/add/<%=company.id%>";
-        let redirect;
+        let info = [];
         for (let i = 0; i < count; i++) {
-          console.log(url);
-          fetch(url, {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-              companyId: "<%=company.id%>",
-              month: month[1],
-              year: month[0],
-              BE: document.getElementById("BEno" + i).value,
-              BEdate: document.getElementById("date" + i).value,
-              productName: document.getElementById("name" + i).value,
-              quantity: document.getElementById("quantity" + i).value,
-              purchaseVal: document.getElementById("purchaseVal" + i).value,
-              purchaseRate: document.getElementById("purchaseRate" + i).value,
-              additionRate: document.getElementById("additionRate" + i).value,
-              additionVal: document.getElementById("additionVal" + i).value,
-              salesRate: document.getElementById("salesRate" + i).value,
-              salesVal: document.getElementById("salesVal" + i).value,
-              vatRate: document.getElementById("vatRate" + i).value,
-              vatVal: document.getElementById("vatVal" + i).value,
-              rebate: document.getElementById("rebate" + i).value,
-              at: document.getElementById("at" + i).value,
-              trDeposite: document.getElementById("trDeposite" + i).value,
-              openingStock: document.getElementById("openingStock" + i).value,
-              salesQty: document.getElementById("salesQty" + i).value,
-              closingStock: document.getElementById("closingStock" + i).value,
-              tr: document.getElementById("tr" + i).value,
-              closingBal: document.getElementById("closingBal" + i).value,
-            }),
-          }).then((response) => {
-            response.json().then((data) => {
-              redirect = data.redirect;
-            });
+          info.push({
+            BE: document.getElementById("BEno" + i).value,
+            BEdate: document.getElementById("date" + i).value,
+            productName: document.getElementById("name" + i).value,
+            quantity: document.getElementById("quantity" + i).value,
+            purchaseVal: document.getElementById("purchaseVal" + i).value,
+            purchaseRate: document.getElementById("purchaseRate" + i).value,
+            additionRate: document.getElementById("additionRate" + i).value,
+            additionVal: document.getElementById("additionVal" + i).value,
+            salesRate: document.getElementById("salesRate" + i).value,
+            salesVal: document.getElementById("salesVal" + i).value,
+            vatRate: document.getElementById("vatRate" + i).value,
+            vatVal: document.getElementById("vatVal" + i).value,
+            rebate: document.getElementById("rebate" + i).value,
+            at: document.getElementById("at" + i).value,
+            trDeposite: document.getElementById("trDeposite" + i).value,
+            openingStock: document.getElementById("openingStock" + i).value,
+            salesQty: document.getElementById("salesQty" + i).value,
+            closingStock: document.getElementById("closingStock" + i).value,
+            tr: document.getElementById("tr" + i).value,
+            closingBal: document.getElementById("closingBal" + i).value,
           });
         }
-        window.location.href = data.redirect;
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            companyId: "<%=company.id%>",
+            month: month[1],
+            year: month[0],
+            info,
+          }),
+        }).then((response) => {
+          response.json().then((data) => {
+            window.location.href = data.redirect;
+          });
+        });
       });
     </script>
   </body>

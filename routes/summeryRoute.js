@@ -90,7 +90,18 @@ router.post("/add/:companyId", (req, res) => {
 router.get("/:summeryId", (req, res) => {
   ImporterSummery.findById(req.params.summeryId)
     .then((response) => {
-      res.render("summery", { title: "summery", summery: response });
+      ImporterSummery.find({ month: response.month, year: response.year })
+        .countDocuments()
+        .then((count) => {
+          res.render("summery", {
+            title: "summery",
+            summery: response,
+            count,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     })
     .catch((err) => {
       console.log(err);

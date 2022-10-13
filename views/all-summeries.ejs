@@ -4,14 +4,15 @@
   <body>
     <%- include("./partials/nav.ejs") %>
     <h2>All summaries for <%=company.name%></h2>
-    <%if (summeries.length !== 0) { summeries.forEach((summery) => { %>
+    <%if (summeries.length !== 0) { summeries.forEach((summary) => { %>
+
     <ul>
       <div class="single">
-        <a href="/summery/<%=summery._id%>">
+        <a href="/summery/<%=summary._id%>">
           <li>
             <h3><%= company.name %></h3>
             <br />
-            <p><%=summery.month%>-<%=summery.year%></p>
+            <p><%=summary.month%>-<%=summary.year%></p>
           </li>
         </a>
       </div>
