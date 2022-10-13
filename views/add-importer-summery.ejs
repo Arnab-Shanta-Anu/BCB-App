@@ -42,9 +42,8 @@
     </div>
     <div id="addInput" class="addInput"></div>
     <button id="submit" class="green">submit</button>
-    <link rel="stylesheet" href="/importerSummery/importerSummery.css" />
     <%- include("./partials/footer.ejs") %>
-    <script src="/importerSummery/addImporterSummery.js"></script>
+    <script src="/importersummary/addImportersummary.js"></script>
     <script>
       ///fetch req with body parameters when submit
       const submitBtn = document.getElementById("submit");
@@ -52,7 +51,7 @@
       submitBtn.addEventListener("click", (e) => {
         let month = document.getElementById("month").value;
         month = month.split("-");
-        const url = "/summery/add/<%=company.id%>";
+        const url = "/summary/add/<%=company.id%>";
         let info = [];
         for (let i = 0; i < count; i++) {
           info.push({

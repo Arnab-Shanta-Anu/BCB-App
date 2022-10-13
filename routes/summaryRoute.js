@@ -1,23 +1,23 @@
 const express = require("express");
 const Company = require("../models/company");
-const ImporterSummery = require("../models/importerSummery");
-const LocalTraderSummery = require("../models/localTraderSummery");
-const ManufacturerSummery = require("../models/manufacturerSummery");
+const Importersummary = require("../models/importersummary");
+const LocalTradersummary = require("../models/localTradersummary");
+const Manufacturersummary = require("../models/manufacturersummary");
 let router = express.Router();
 
-//view all summeries
+//view all summaries
 router.get("/all/:companyId", (req, res) => {
   const id = req.params.companyId;
   Company.findById(id)
     .then((result) => {
       let company = result;
       if (company.type === "Importer") {
-        ImporterSummery.find({ companyId: id })
+        Importersummary.find({ companyId: id })
           .then((result) => {
-            res.render("all-summeries", {
-              title: "Summeries",
+            res.render("all-summaries", {
+              title: "summaries",
               company,
-              summeries: result,
+              summaries: result,
             });
           })
           .catch((err) => {
@@ -26,12 +26,12 @@ router.get("/all/:companyId", (req, res) => {
           });
       }
       if (company.type === "Local trader") {
-        LocalTraderSummery.find({ companyId: id })
+        LocalTradersummary.find({ companyId: id })
           .then((result) => {
-            res.render("all-summeries", {
-              title: "Summeries",
+            res.render("all-summaries", {
+              title: "summaries",
               company,
-              summeries: result,
+              summaries: result,
             });
           })
           .catch((err) => {
@@ -41,12 +41,12 @@ router.get("/all/:companyId", (req, res) => {
       }
 
       if (company.type === "Manufacturer") {
-        ManufacturerSummery.find({ companyId: id })
+        Manufacturersummary.find({ companyId: id })
           .then((result) => {
-            res.render("all-summeries", {
-              title: "Summeries",
+            res.render("all-summaries", {
+              title: "summaries",
               company,
-              summeries: result,
+              summaries: result,
             });
           })
           .catch((err) => {
@@ -60,42 +60,42 @@ router.get("/all/:companyId", (req, res) => {
     });
 });
 
-//view add summery page
+//view add summary page
 router.get("/add/:companyId", (req, res) => {
   Company.findById(req.params.companyId)
     .then((result) => {
-      res.render("add-importer-summery", { title: "summery", company: result });
+      res.render("add-importer-summary", { title: "summary", company: result });
     })
     .catch((err) => {
       console.log(err);
     });
 });
 
-//add summery
+//add summary
 router.post("/add/:companyId", (req, res) => {
   console.log("post req hit");
-  let importerSummery = new ImporterSummery(req.body);
-  importerSummery
+  let importersummary = new Importersummary(req.body);
+  importersummary
     .save()
     .then((response) => {
       res.json({
-        redirect: "/summery/all/" + req.params.companyId,
+        redirect: "/summary/all/" + req.params.companyId,
       });
     })
     .catch((err) => {
       console.log(err);
     });
 });
-//view single summery
-router.get("/:summeryId", (req, res) => {
-  ImporterSummery.findById(req.params.summeryId)
+//view single summary
+router.get("/:summaryId", (req, res) => {
+  Importersummary.findById(req.params.summaryId)
     .then((response) => {
-      ImporterSummery.find({ month: response.month, year: response.year })
+      Importersummary.find({ month: response.month, year: response.year })
         .countDocuments()
         .then((count) => {
-          res.render("summery", {
-            title: "summery",
-            summery: response,
+          res.render("summary", {
+            title: "summary",
+            summary: response,
             count,
           });
         })
@@ -108,14 +108,14 @@ router.get("/:summeryId", (req, res) => {
     });
 });
 
-//delete summery
-router.delete("/:summeryId", (req, res) => {
-  res.send("summery dlt req");
+//delete summary
+router.delete("/:summaryId", (req, res) => {
+  res.send("summary dlt req");
 });
 
-//summery modify
-router.put("/:summeryId", (req, res) => {
-  res.send("summery modify req");
+//summary modify
+router.put("/:summaryId", (req, res) => {
+  res.send("summary modify req");
 });
 
 module.exports = router;

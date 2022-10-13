@@ -4,7 +4,7 @@
   <body>
     <%- include("./partials/nav.ejs") %>
 
-    <h2><%=summery.month%>-<%=summery.year%></h2>
+    <h2><%=summary.month%>-<%=summary.year%></h2>
     <div class="side-by-side">
       <h3>B/E No</h3>
       <h3>Date</h3>
@@ -28,13 +28,38 @@
       <h3>TR</h3>
       <h3>Closing Balance (note 65)</h3>
     </div>
+
+    <%summary.info.forEach((x)=>{%>
+    <div class="side-by-side">
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+    </div>
+    <%})%>
     <div class="side-by-side">
       <button class="green">edit</button>
       <div class="bcb">
-        <a href="#">delete</a>
+        <button>delete</button>
       </div>
     </div>
-    <%summery.info.forEach((x)=>{%> <%})%> <%- include("./partials/footer.ejs")
-    %>
+    <%- include("./partials/footer.ejs") %>
   </body>
 </html>

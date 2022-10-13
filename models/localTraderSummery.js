@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const localTraderSummerySchema = new Schema(
+const localTradersummarySchema = new Schema(
   {
     companyId: {
       type: String,
@@ -30,8 +30,8 @@ const localTraderSummerySchema = new Schema(
   { timestamps: true }
 );
 
-const LocalTraderSummery = mongoose.model(
-  "LocalTraderSummery",
-  localTraderSummerySchema
+const LocalTradersummary = mongoose.model(
+  "LocalTradersummary",
+  localTradersummarySchema
 );
-module.exports = LocalTraderSummery;
+module.exports = LocalTradersummary;

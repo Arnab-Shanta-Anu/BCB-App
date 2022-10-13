@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const importerSummerySchema = new Schema(
+const importersummarySchema = new Schema(
   {
     companyId: {
       type: String,
@@ -102,8 +102,8 @@ const importerSummerySchema = new Schema(
   { timestamps: true }
 );
 
-const ImporterSummery = mongoose.model(
-  "ImporterSummery",
-  importerSummerySchema
+const Importersummary = mongoose.model(
+  "Importersummary",
+  importersummarySchema
 );
-module.exports = ImporterSummery;
+module.exports = Importersummary;

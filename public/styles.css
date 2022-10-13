@@ -118,7 +118,7 @@ h3 {
   cursor: pointer;
 }
 .bcb a {
-  margin-top: 20px;
+  margin: 5px;
   background: crimson;
   color: white;
   padding: 3px;
@@ -144,9 +144,30 @@ h3 {
 .green {
   background: rgb(42, 222, 42);
   color: white;
-  border: 0;
   font-size: 1.2em;
   cursor: pointer;
+  padding: 6px;
+  border: 0;
+  margin-top: 20px;
+  margin-right: 5px;
+}
+.side-by-side input {
+  width: 104px;
+  font-size: 1em;
+}
+input[type="date"] {
+  width: 108px;
+  padding: 5px 0;
+  font-size: 1.1em;
+}
+input[type="month"] {
+  width: 150px;
+  font-size: 1.2em;
+}
+select {
+  min-width: 110px;
+  font-size: 1.2em;
+  padding: 5px 0;
 }
 .side-by-side {
   display: flex;
@@ -158,4 +179,7 @@ h3 {
   align-items: center;
   font-size: 1em;
   min-width: 100px;
+}
+.elem1 {
+  flex-grow: 1;
 }

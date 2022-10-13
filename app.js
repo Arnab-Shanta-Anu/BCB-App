@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const userRoute = require("./routes/userRoute");
 const companyRoute = require("./routes/companyRoute");
-const summeryRoute = require("./routes/summeryRoute");
+const summaryRoute = require("./routes/summaryRoute");
 const loginRoute = require("./routes/loginRoute");
 const registerRoute = require("./routes/registerRoute");
 
@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 //register view engine
 app.set("view engine", "ejs");
 
-app.use("/summery", summeryRoute);
+app.use("/summary", summaryRoute);
 app.use("/company", companyRoute);
 app.use("/user", userRoute);
 app.use("/login", loginRoute);

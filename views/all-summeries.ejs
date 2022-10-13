@@ -4,11 +4,11 @@
   <body>
     <%- include("./partials/nav.ejs") %>
     <h2>All summaries for <%=company.name%></h2>
-    <%if (summeries.length !== 0) { summeries.forEach((summary) => { %>
+    <%if (summaries.length !== 0) { summaries.forEach((summary) => { %>
 
     <ul>
       <div class="single">
-        <a href="/summery/<%=summary._id%>">
+        <a href="/summary/<%=summary._id%>">
           <li>
             <h3><%= company.name %></h3>
             <br />
@@ -18,9 +18,9 @@
       </div>
     </ul>
     <% }) } else {%>
-    <p>No summeries found...</p>
+    <p>No summaries found...</p>
     <% } %>
-    <div class="bcb"><a href="/summery/add/<%=company._id%>">Add New</a></div>
+    <div class="bcb"><a href="/summary/add/<%=company._id%>">Add New</a></div>
     <%- include("./partials/footer.ejs") %>
   </body>
 </html>
