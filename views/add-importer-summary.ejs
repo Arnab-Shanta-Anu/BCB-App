@@ -43,7 +43,7 @@
     <div id="addInput" class="addInput"></div>
     <button id="submit" class="green">submit</button>
     <%- include("./partials/footer.ejs") %>
-    <script src="/importersummary/addImportersummary.js"></script>
+    <script src="/importersummary/addImporterSummary.js"></script>
     <script>
       ///fetch req with body parameters when submit
       const submitBtn = document.getElementById("submit");
@@ -58,6 +58,7 @@
             BE: document.getElementById("BEno" + i).value,
             BEdate: document.getElementById("date" + i).value,
             productName: document.getElementById("name" + i).value,
+            HScode: document.getElementById("HScode" + i).value,
             quantity: document.getElementById("quantity" + i).value,
             purchaseVal: document.getElementById("purchaseVal" + i).value,
             purchaseRate: document.getElementById("purchaseRate" + i).value,

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+
+    <h2><%=summary.month%>-<%=summary.year%></h2>
+    <div class="side-by-side">
+      <h3>B/E No</h3>
+      <h3>Date</h3>
+      <h3>Product Description</h3>
+      <h3>HS Code</h3>
+      <h3>Quantity</h3>
+      <h3>Purchase Value</h3>
+      <h3>Purchase Rate</h3>
+      <h3>Addition %</h3>
+      <h3>Addition Value</h3>
+      <h3>Sales Rate</h3>
+      <h3>Sales Value</h3>
+      <h3>VAT %</h3>
+      <h3>VAT Amount</h3>
+      <h3>Rebate</h3>
+      <h3>AT 5%</h3>
+      <h3>TR Deposite</h3>
+      <h3>Opening Stock</h3>
+      <h3>Sales Quantity</h3>
+      <h3>Closing Stock</h3>
+      <h3>TR</h3>
+      <h3>Closing Balance (note 65)</h3>
+    </div>
+
+    <%summary.info.forEach((x)=>{%>
+    <div class="side-by-side">
+      <input type="text" value="<%=x.BE%>" />
+      <div>
+        <input type="date" value="<%=x.BEdate%>" />
+      </div>
+      <input type="text" value="<%=x.productName%>" />
+      <input type="text" value="<%=x.HScode%>" />
+      <input type="text" value="<%=x.quantity%>" />
+      <input type="text" value="<%=x.purchaseVal%>" />
+      <input type="text" value="<%=x.purchaseRate%>" />
+      <input type="text" value="<%=x.additionRate%>" />
+      <input type="text" value="<%=x.additionVal%>" />
+      <input type="text" value="<%=x.salesRate%>" />
+      <input type="text" value="<%=x.salesVal%>" />
+      <input type="text" value="<%=x.vatRate%>" />
+      <input type="text" value="<%=x.vatVal%>" />
+      <input type="text" value="<%=x.rebate%>" />
+      <input type="text" value="<%=x.at%>" />
+      <input type="text" value="<%=x.trDeposite%>" />
+      <input type="text" value="<%=x.openingStock%>" />
+      <input type="text" value="<%=x.salesQty%>" />
+      <input type="text" value="<%=x.closingStock%>" />
+      <input type="text" value="<%=x.tr%>" />
+      <input type="text" value="<%=x.closingBal%>" />
+    </div>
+    <%})%>
+    <div class="bcb">
+      <button id="dlt">delete</button>
+    </div>
+
+    <%- include("./partials/footer.ejs") %>
+    <script>
+      const dltBtn = document.getElementById("dlt");
+      dltBtn.addEventListener("click", (e) => {
+        const url = "/summary/<%=summary.companyId%>/<%=summary._id%>";
+        fetch(url, {
+          method: "DELETE",
+        })
+          .then((resposne) => {
+            resposne.json().then((data) => {
+              window.location.href = data.redirect;
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    </script>
+  </body>
+</html>

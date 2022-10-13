@@ -22,10 +22,13 @@ const importersummarySchema = new Schema(
           required: true,
         },
         BEdate: {
-          type: Date,
+          type: String,
           required: true,
         },
         productName: {
+          type: String,
+        },
+        HScode: {
           type: String,
         },
         quantity: {

@@ -109,8 +109,16 @@ router.get("/:summaryId", (req, res) => {
 });
 
 //delete summary
-router.delete("/:summaryId", (req, res) => {
-  res.send("summary dlt req");
+router.delete("/:companyId/:summaryId", (req, res) => {
+  Importersummary.findByIdAndDelete(req.params.summaryId)
+    .then((response) => {
+      res.json({
+        redirect: "/summary/all/" + req.params.companyId,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 //summary modify
