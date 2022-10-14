@@ -1,4 +1,5 @@
 const express = require("express");
+const saveToExcel = require("../controllers/saveToExcel");
 const Company = require("../models/company");
 const Importersummary = require("../models/importersummary");
 const LocalTradersummary = require("../models/localTradersummary");
@@ -86,6 +87,14 @@ router.post("/add/:companyId", (req, res) => {
       console.log(err);
     });
 });
+//save summary in excel
+router.get("/save/:summaryID", (req, res) => {
+  (async () => {
+    let response = await Importersummary.findById(req.params.summaryID);
+    await saveToExcel(response);
+  })();
+});
+
 //view single summary
 router.get("/:summaryId", (req, res) => {
   Importersummary.findById(req.params.summaryId)
