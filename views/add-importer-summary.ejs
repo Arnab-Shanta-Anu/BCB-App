@@ -41,9 +41,33 @@
       <button id="add" class="green">Add</button>
     </div>
     <div id="addInput" class="addInput"></div>
+    <div class="side-by-side">
+      <input type="text" value="Total" name="" id="" disabled />
+      <input type="text" name="" id="" disabled />
+      <input type="text" name="" id="" disabled />
+      <input type="text" name="" id="" disabled />
+      <input type="text" name="" id="totalQty" disabled />
+      <input type="text" name="" id="totalPurchaseVal" disabled />
+      <input type="text" name="" id="" disabled />
+      <input type="text" name="" id="" disabled />
+      <input type="text" name="" id="totalAdditionVal" disabled />
+      <input type="text" name="" id="" disabled />
+      <input type="text" name="" id="totalSalesVal" disabled />
+      <input type="text" name="" id="" disabled />
+      <input type="text" name="" id="totalVatVal" disabled />
+      <input type="text" name="" id="totalRebate" disabled />
+      <input type="text" name="" id="totalAt" disabled />
+      <input type="text" name="" id="totalTrDeposite" disabled />
+      <input type="text" name="" id="" disabled />
+      <input type="text" name="" id="totalSalesQty" disabled />
+      <input type="text" name="" id="" disabled />
+      <input type="text" name="" id="totalTr" disabled />
+      <input type="text" name="" id="" disabled />
+    </div>
     <button id="submit" class="green">submit</button>
     <%- include("./partials/footer.ejs") %>
-    <script src="/importersummary/addImporterSummary.js"></script>
+    <script src="/importersummary/addHtmlForm.js"></script>
+    <script src="/importersummary/calculation.js"></script>
     <script>
       ///fetch req with body parameters when submit
       const submitBtn = document.getElementById("submit");
@@ -78,22 +102,22 @@
             closingBal: document.getElementById("closingBal" + i).value,
           });
         }
-        fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            companyId: "<%=company.id%>",
-            month: month[1],
-            year: month[0],
-            info,
-          }),
-        }).then((response) => {
-          response.json().then((data) => {
-            window.location.href = data.redirect;
+        (async () => {
+          let response = await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              companyId: "<%=company.id%>",
+              month: month[1],
+              year: month[0],
+              info,
+            }),
           });
-        });
+          let data = await response.json();
+          window.location.href = data.redirect;
+        })();
       });
     </script>
   </body>
