@@ -96,10 +96,48 @@ function calculateTotal() {
   let totalTr = document.getElementById("totalTr");
 
   totalQty.value = 0.0;
+  totalPurchaseVal.value = 0.0;
+  totalAdditionVal.value = 0.0;
+  totalSalesVal.value = 0.0;
+  totalVatVal.value = 0.0;
+  totalRebate.value = 0.0;
+  totalAt.value = 0.0;
+  totalTrDeposite.value = 0.0;
+  totalSalesQty.value = 0.0;
+  totalTr.value = 0.0;
+
   for (let i = 0; i < count; i++) {
     totalQty.value =
       parseFloat(totalQty.value) +
       parseFloat(document.getElementById("quantity" + i).value);
+    totalPurchaseVal.value =
+      parseFloat(totalPurchaseVal.value) +
+      parseFloat(document.getElementById("purchaseVal" + i).value);
+    totalAdditionVal.value =
+      parseFloat(totalAdditionVal.value) +
+      parseFloat(document.getElementById("additionVal" + i).value);
+    console.log(totalAdditionVal.value);
+    totalSalesVal.value =
+      parseFloat(totalSalesVal.value) +
+      parseFloat(document.getElementById("salesVal" + i).value);
+    totalVatVal.value =
+      parseFloat(totalVatVal.value) +
+      parseFloat(document.getElementById("vatVal" + i).value);
+    totalRebate.value =
+      parseFloat(totalRebate.value) +
+      parseFloat(document.getElementById("rebate" + i).value);
+    totalAt.value =
+      parseFloat(totalAt.value) +
+      parseFloat(document.getElementById("at" + i).value);
+    totalTrDeposite.value =
+      parseFloat(totalTrDeposite.value) +
+      parseFloat(document.getElementById("trDeposite" + i).value);
+    totalSalesQty.value =
+      parseFloat(totalSalesQty.value) +
+      parseFloat(document.getElementById("salesQty" + i).value);
+    totalTr.value =
+      parseFloat(totalTr.value) +
+      parseFloat(document.getElementById("tr" + i).value);
   }
 }
 document.addEventListener("keyup", (e) => {
