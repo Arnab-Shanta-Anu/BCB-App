@@ -1,22 +1,10 @@
 const express = require("express");
-const Company = require("../models/company");
+const { getAllCompanies } = require("../controllers/companyController");
 
 let router = express.Router();
 
-//view all companies
-router.get("/all", (req, res) => {
-  Company.find()
-    .sort({ name: 1 })
-    .then((result) => {
-      res.render("all-companies", {
-        title: "all companies",
-        companies: result,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+//view all companies(/api/companies)
+router.get("/", getAllCompanies);
 
 //add a company
 router.get("/add", (req, res) => {
