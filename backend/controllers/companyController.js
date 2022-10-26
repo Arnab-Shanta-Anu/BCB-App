@@ -1,9 +1,8 @@
 const Company = require("../models/company");
 
 const getAllCompanies = async (req, res) => {
-  res.set("Access-Control-Allow-Origin", "*");
   try {
-    const companies = await Company.find();
+    const companies = await Company.find().sort({ name: 1 });
     res.status(200).json(companies);
   } catch (err) {
     res.status(500).json({ error: err.message });

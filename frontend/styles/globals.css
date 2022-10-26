@@ -1,15 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chewy&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-nav {
-  display: flex;
-}
 body {
   background-color: #9a84de;
   color: #f2f2f2;
   text-align: center;
+  max-width: 1600px;
+  margin: 0 auto;
+  justify-content: space-between;
+  font-family: "Noto Serif", serif;
+}
+nav {
+  display: flex;
+  background-color: #8060e2;
+  border-bottom: solid #f22233 2px;
+}
+nav h1 {
+  font-family: "Fredoka One", cursive;
+  font-size: 4.2em;
+  color: #03a64a;
+  align-self: center;
+}
+nav p {
+  font-family: "Chewy", cursive;
+  font-size: 2em;
+  color: #1b9951;
+}
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+nav li {
+  list-style-type: none;
+  font-size: 2em;
+  transform: rotate(45deg);
+  margin-right: 10px;
+  transition: transform 0.5s ease-in-out;
+}
+nav li:hover {
+  transform: rotate(0deg);
+}
+nav li a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.5s ease-in-out;
+}
+nav li a:hover {
+  text-decoration: underline;
+  transform: rotate(-45deg);
+
+  color: white;
 }
 footer {
   color: rgb(23, 23, 23);

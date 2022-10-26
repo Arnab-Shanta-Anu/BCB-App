@@ -18,7 +18,10 @@ const connectMongo = async () => {
 connectMongo();
 const app = express();
 app.use(express.json());
-
+app.use((req, res, next) => {
+  res.set("Access-Control-Allow-Origin", "*");
+  next();
+});
 app.use((req, res, next) => {
   console.log(req.method, req.url);
   next();
