@@ -3,3 +3,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+nav {
+  display: flex;
+}
+body {
+  background-color: #9a84de;
+  color: #f2f2f2;
+  text-align: center;
+}
+footer {
+  color: rgb(23, 23, 23);
+  border-top: solid #f22233 2px;
+  padding: 10px;
+}

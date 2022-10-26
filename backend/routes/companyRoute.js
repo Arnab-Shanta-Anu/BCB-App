@@ -1,5 +1,12 @@
 const express = require("express");
-const { getAllCompanies } = require("../controllers/companyController");
+const { get } = require("mongoose");
+const {
+  getAllCompanies,
+  getSingleCompany,
+  addCompany,
+  updateCompany,
+  deleteCompany,
+} = require("../controllers/companyController");
 
 let router = express.Router();
 
@@ -7,75 +14,15 @@ let router = express.Router();
 router.get("/", getAllCompanies);
 
 //add a company
-router.get("/add", (req, res) => {
-  res.render("add-company", { title: "Add company" });
-});
-router.post("/add", (req, res) => {
-  let company = new Company(req.body);
-  company
-    .save()
-    .then((result) => {
-      res.redirect("/company/all");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+router.get("/add", addCompany);
 
 //view single company
-router.get("/:id", (req, res) => {
-  const id = req.params.id;
-  Company.findById(id)
-    .then((result) => {
-      res.render("company", { title: "Details", company: result });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+router.get("/:id", getSingleCompany);
 
 //delete a company
-router.delete("/:id", (req, res) => {
-  const id = req.params.id;
-  Company.findByIdAndDelete(id)
-    .then((result) => {
-      res.json({
-        redirect: "/company/all",
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-router.get("/edit/:id", (req, res) => {
-  Company.findById(req.params.id)
-    .then((result) => {
-      res.render("edit-company", { title: "Edit", company: result });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-//modify a company details
-router.post("/edit/:id", (req, res) => {
-  const id = req.params.id;
-  //delete then save new
+router.delete("/:id", deleteCompany);
 
-  Company.findByIdAndDelete(id)
-    .then((result) => {})
-    .catch((err) => {
-      console.log(err);
-    });
-
-  let company = new Company(req.body);
-  company
-    .save()
-    .then((result) => {
-      res.redirect("/company/all");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+//update a company
+router.put("/:id", updateCompany);
 
 module.exports = router;

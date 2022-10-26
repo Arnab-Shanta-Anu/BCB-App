@@ -1,8 +1,10 @@
 const Navbar = () => {
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <nav>
+      <div className="logo">
+        <h1>BCB App</h1>
+      </div>
+    </nav>
   );
 };
 
