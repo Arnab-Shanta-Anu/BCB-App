@@ -91,7 +91,8 @@ router.post("/add/:companyId", (req, res) => {
 router.get("/save/:summaryID", (req, res) => {
   (async () => {
     let response = await Importersummary.findById(req.params.summaryID);
-    await saveToExcel(response);
+    let company = await Company.findById(response.companyId);
+    await saveToExcel(response, company.name);
   })();
 });
 
