@@ -1,12 +1,12 @@
-import { Link } from "next/link";
-const Home = ({ companies }) => {
+import Link from "next/link";
+const Home = () => {
   return (
     <div>
-      <button>All Companies</button>
+      <Link href="/companies">All Companies</Link>
       <br />
-      <button>test</button>
+      <button>Address and Phone no.</button>
       <br />
-      <button>test</button>
+      <button>Id and Password</button>
       <br />
     </div>
   );

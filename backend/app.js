@@ -5,11 +5,9 @@ const userRoute = require("./routes/userRoute");
 const companyRoute = require("./routes/companyRoute");
 const summaryRoute = require("./routes/summaryRoute");
 
-const Company = require("./models/company");
-
 const dbURI = "mongodb://localhost:27017/BCB-App";
 const connectMongo = async () => {
-  const result = await mongoose.connect(dbURI);
+  await mongoose.connect(dbURI);
   app.listen(4000, () => {
     console.log("DB connected & server started on port 4000");
   });
