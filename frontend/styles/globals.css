@@ -10,14 +10,15 @@ body {
   background-color: #ddffcc;
   color: black;
   text-align: center;
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
   justify-content: space-between;
   font-family: "Noto Serif", serif;
 }
+/* Navbar styles */
 nav {
   display: flex;
-  border-bottom: solid #bababa 2px;
+  border-bottom: solid #36bc3b 5px;
 }
 nav h1 {
   font-family: "Fredoka One", cursive;
@@ -38,7 +39,7 @@ nav ul {
 }
 nav li {
   list-style-type: none;
-  font-size: 2em;
+  font-size: 1.6em;
   margin-right: 10px;
 }
 nav li a {
@@ -49,9 +50,19 @@ nav li a:hover {
   text-decoration: underline;
   font-weight: bold;
 }
-
+/* Navbar end */
 footer {
   color: rgb(194, 186, 186);
   border-top: solid #bababa 2px;
   padding: 10px;
+}
+/* Home styles */
+button {
+  background-color: crimson;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin: 5px 0;
+  width: 150px;
+  height: 50px;
 }
