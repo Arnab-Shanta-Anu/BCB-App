@@ -1,7 +1,6 @@
 export const getStaticProps = async () => {
   const response = await fetch("http://localhost:4000/api/companies");
   const companies = await response.json();
-
   return {
     props: {
       companies,
@@ -9,18 +8,18 @@ export const getStaticProps = async () => {
     revalidate: 1,
   };
 };
-
-const Companies = ({ companies }) => {
+const IdPass = ({ companies }) => {
   return (
-    <div>
-      <h1>All Companies</h1>
+    <>
       {companies.map((company) => (
-        <div key={company._id} className="company">
+        <div key={companies._id}>
           <h2>{company.name}</h2>
+          <p>id: {company.ID}</p>
+          <p>pass: {company.pass}</p>
         </div>
       ))}
-    </div>
+    </>
   );
 };
 
-export default Companies;
+export default IdPass;

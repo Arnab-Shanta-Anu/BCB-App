@@ -2,11 +2,17 @@ import Link from "next/link";
 const Home = () => {
   return (
     <div>
-      <Link href="/companies">All Companies</Link>
+      <Link href="/companies">
+        <button>All Companies</button>
+      </Link>
       <br />
-      <button>Address and Phone no.</button>
+      <Link href="/companies/address">
+        <button>Address and Phone no.</button>
+      </Link>
       <br />
-      <button>Id and Password</button>
+      <Link href="/companies/idpass">
+        <button>Id and Password</button>
+      </Link>
       <br />
     </div>
   );
