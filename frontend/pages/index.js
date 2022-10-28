@@ -1,14 +1,12 @@
 import Link from "next/link";
-const Home = ({ companies }) => {
+const Home = () => {
   return (
     <div>
-      <Link href="/companies">
-        <button>All Companies</button>
-      </Link>
+      <Link href="/companies">All Companies</Link>
       <br />
-      <button>test</button>
+      <button>Address and Phone no.</button>
       <br />
-      <button>test</button>
+      <button>Id and Password</button>
       <br />
     </div>
   );
