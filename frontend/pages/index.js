@@ -1,8 +1,10 @@
-import { Link } from "next/link";
+import Link from "next/link";
 const Home = ({ companies }) => {
   return (
     <div>
-      <button>All Companies</button>
+      <Link href="/companies">
+        <button>All Companies</button>
+      </Link>
       <br />
       <button>test</button>
       <br />
