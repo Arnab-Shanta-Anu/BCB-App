@@ -12,7 +12,7 @@ const IdPass = ({ companies }) => {
   return (
     <>
       {companies.map((company) => (
-        <div key={companies._id}>
+        <div key={company._id}>
           <h2>{company.name}</h2>
           <p>id: {company.ID}</p>
           <p>pass: {company.pass}</p>
