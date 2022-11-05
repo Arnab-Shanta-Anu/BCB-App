@@ -67,3 +67,20 @@ button {
   height: 50px;
   cursor: pointer;
 }
+.companies-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  margin-top: 10px;
+}
+.company {
+  height: 120px;
+  background-color: white;
+  color: black;
+  text-align: center;
+}
+.company:hover {
+  background-color: crimson;
+  color: white;
+  cursor: pointer;
+}

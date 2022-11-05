@@ -11,15 +11,15 @@ export const getStaticProps = async () => {
 
 const Address = ({ companies }) => {
   return (
-    <>
+    <div className="companies-container">
       {companies.map((company) => (
-        <div key={company._id} className="companies">
+        <div key={company._id} className="company">
           <h2>{company.name}</h2>
           <p>address: {company.address}</p>
           <p>phone: {company.phone}</p>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

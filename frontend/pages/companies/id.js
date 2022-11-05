@@ -10,15 +10,15 @@ export const getStaticProps = async () => {
 };
 const IdPass = ({ companies }) => {
   return (
-    <>
+    <div className="companies-container">
       {companies.map((company) => (
-        <div key={company._id}>
+        <div key={company._id} className="company">
           <h2>{company.name}</h2>
           <p>id: {company.ID}</p>
           <p>pass: {company.pass}</p>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

@@ -10,7 +10,7 @@ const Home = () => {
         <button>Address and Phone no.</button>
       </Link>
       <br />
-      <Link href="/companies/idpass">
+      <Link href="/companies/id">
         <button>Id and Password</button>
       </Link>
       <br />

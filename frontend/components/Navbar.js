@@ -75,14 +75,6 @@ const Navbar = () => {
             </g>
           </g>
         </svg>
-
-        {/* <div>
-        <motion.img
-          src="bcbLogo.png"
-          initial={{ y: -250 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 1.5, type: "spring", stiffness: 130 }}
-  ></motion.img></div>*/}
         <p>Total vat and tax solution center</p>
       </div>
       <motion.h1

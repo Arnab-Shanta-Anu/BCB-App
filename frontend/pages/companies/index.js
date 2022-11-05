@@ -12,8 +12,7 @@ export const getStaticProps = async () => {
 
 const Companies = ({ companies }) => {
   return (
-    <div>
-      <h1>All Companies</h1>
+    <div className="companies-container">
       {companies.map((company) => (
         <div key={company._id} className="company">
           <h2>{company.name}</h2>
