@@ -1,3 +1,4 @@
+import Link from "next/link";
 export const getStaticProps = async () => {
   const response = await fetch("http://localhost:4000/api/companies");
   const companies = await response.json();

@@ -67,6 +67,10 @@ button {
   height: 50px;
   cursor: pointer;
 }
+a {
+  text-decoration: none;
+  color: black;
+}
 .companies-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
