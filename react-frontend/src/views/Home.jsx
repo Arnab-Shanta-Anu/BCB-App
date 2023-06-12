@@ -8,7 +8,7 @@ const Home = () => {
         to="/form-9-1"
         className="bg-transparent hover:bg-red-500 text-red-700 font-semibold
         hover:text-white py-2 px-4 border border-red-500
-        hover:border-transparent rounded hover:transition-all"
+        hover:border-transparent rounded"
       >
         Form-9.1
       </Link>

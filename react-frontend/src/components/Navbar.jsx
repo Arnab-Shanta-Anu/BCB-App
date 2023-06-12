@@ -40,7 +40,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <hr className="w-2/3 border-2 border-green-500 mx-auto" />
+      <hr className="w-2/3 border-2 border-green-500 mx-auto mb-5" />
     </nav>
   );
 };
