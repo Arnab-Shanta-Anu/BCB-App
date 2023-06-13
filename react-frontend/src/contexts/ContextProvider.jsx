@@ -27,8 +27,10 @@ export const ContextProvider = ({ children }) => {
       value={{
         user,
         token,
+        admin,
         setUser,
         setToken,
+        setAdmin,
       }}
     >
       {children}

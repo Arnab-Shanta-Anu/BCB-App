@@ -7,6 +7,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    employee_id: {
+      type: String,
+      required: true,
+    },
     pass: {
       type: String,
       required: true,

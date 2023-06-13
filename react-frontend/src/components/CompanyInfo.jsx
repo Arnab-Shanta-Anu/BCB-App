@@ -25,7 +25,7 @@ const CompanyInfo = ({ company }, full) => {
     );
   } else {
     return (
-      <div className="border border-black w-2/3 min-w-max text-center overflow-x-auto hover:bg-blue-400 hover:text-white">
+      <div className="border border-black min-w-min text-center overflow-x-auto hover:bg-blue-400 hover:text-white">
         <h2>Name: {name}</h2>
         <p>Address: {address}</p>
         <p>Phone: {phone}</p>

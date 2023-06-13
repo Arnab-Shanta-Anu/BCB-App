@@ -2,7 +2,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 
 const Dashboard = () => {
   const { admin } = useStateContext();
-  if (!admin)
+  if (admin == false)
     return (
       <div className="text-center text-3xl font-bold">
         "You Dont have permission"

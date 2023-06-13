@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 
 const userRoute = require("./routes/userRoute");
@@ -16,10 +17,11 @@ const connectMongo = async () => {
 connectMongo();
 const app = express();
 app.use(express.json());
-app.use((req, res, next) => {
-  res.set("Access-Control-Allow-Origin", "*");
-  next();
-});
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use((req, res, next) => {
   console.log(req.method, req.url);
   next();
