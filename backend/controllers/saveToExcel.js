@@ -6,12 +6,8 @@ const saveToExcel = (infos) => {
   // Add Worksheets to the workbook
   var worksheet = workbook.addWorksheet("Sheet 1");
 
-  // Create a reusable style
-
-  // Set value of cell A1 to 100 as a number type styled with paramaters of style
   worksheet.cell(1, 1).string(infos.month);
 
-  // Set value of cell B1 to 300 as a number type styled with paramaters of style
   worksheet.cell(1, 2).string(infos.year);
 
   // Set value of cell C1 to a formula styled with paramaters of style

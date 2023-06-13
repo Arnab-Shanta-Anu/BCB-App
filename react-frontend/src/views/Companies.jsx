@@ -31,7 +31,6 @@ const Companies = () => {
     <div className="text-center flex flex-col items-center">
       List of Companies
       <ol className="w-9/12 flex flex-col items-center">
-        {console.log(typeof companyData)}
         {companyData.map((company) => (
           <li key={companyData[0]._id} className="w-9/12 my-2">
             <CompanyInfo company={company} full={false} />;
@@ -53,6 +52,12 @@ const Companies = () => {
           </li>
         ))}
       </ol>
+      <button
+        className="sticky bottom-5 right-5 bg-red-500 font-semibold hover:text-white py-2 px-4
+       border-black rounded place-self-end"
+      >
+        Add new
+      </button>
     </div>
   );
 };

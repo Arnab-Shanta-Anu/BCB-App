@@ -1,9 +1,9 @@
 const express = require("express");
 const saveToExcel = require("../controllers/saveToExcel");
 const Company = require("../models/company");
-const Importersummary = require("../models/importersummary");
-const LocalTradersummary = require("../models/localTradersummary");
-const Manufacturersummary = require("../models/manufacturersummary");
+const ImporterSummary = require("../models/importerSummary");
+const LocalTraderSummary = require("../models/localTraderSummary");
+const ManufacturerSummary = require("../models/manufacturerSummary");
 let router = express.Router();
 
 //view all summaries
@@ -13,7 +13,7 @@ router.get("/all/:companyId", (req, res) => {
     .then((result) => {
       let company = result;
       if (company.type === "Importer") {
-        Importersummary.find({ companyId: id })
+        ImporterSummary.find({ companyId: id })
           .then((result) => {
             res.render("all-summaries", {
               title: "summaries",
@@ -27,7 +27,7 @@ router.get("/all/:companyId", (req, res) => {
           });
       }
       if (company.type === "Local trader") {
-        LocalTradersummary.find({ companyId: id })
+        LocalTraderSummary.find({ companyId: id })
           .then((result) => {
             res.render("all-summaries", {
               title: "summaries",
@@ -42,7 +42,7 @@ router.get("/all/:companyId", (req, res) => {
       }
 
       if (company.type === "Manufacturer") {
-        Manufacturersummary.find({ companyId: id })
+        ManufacturerSummary.find({ companyId: id })
           .then((result) => {
             res.render("all-summaries", {
               title: "summaries",
@@ -75,7 +75,7 @@ router.get("/add/:companyId", (req, res) => {
 //add summary
 router.post("/add/:companyId", (req, res) => {
   console.log("post req hit");
-  let importersummary = new Importersummary(req.body);
+  let importersummary = new ImporterSummary(req.body);
   importersummary
     .save()
     .then((response) => {
@@ -90,16 +90,16 @@ router.post("/add/:companyId", (req, res) => {
 //save summary in excel
 router.get("/save/:summaryID", (req, res) => {
   (async () => {
-    let response = await Importersummary.findById(req.params.summaryID);
+    let response = await ImporterSummary.findById(req.params.summaryID);
     await saveToExcel(response);
   })();
 });
 
 //view single summary
 router.get("/:summaryId", (req, res) => {
-  Importersummary.findById(req.params.summaryId)
+  ImporterSummary.findById(req.params.summaryId)
     .then((response) => {
-      Importersummary.find({ month: response.month, year: response.year })
+      ImporterSummary.find({ month: response.month, year: response.year })
         .countDocuments()
         .then((count) => {
           res.render("summary", {
@@ -119,7 +119,7 @@ router.get("/:summaryId", (req, res) => {
 
 //delete summary
 router.delete("/:companyId/:summaryId", (req, res) => {
-  Importersummary.findByIdAndDelete(req.params.summaryId)
+  ImporterSummary.findByIdAndDelete(req.params.summaryId)
     .then((response) => {
       res.json({
         redirect: "/summary/all/" + req.params.companyId,
