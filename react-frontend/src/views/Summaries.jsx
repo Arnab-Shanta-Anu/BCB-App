@@ -1,17 +1,12 @@
+import { useLocation } from "react-router-dom";
 import Summary from "../components/Summary";
 
 const Summaries = () => {
-  const company = {
-    name: "abc",
-    address: "a1b2c",
-    phone: "01730909838",
-    email: "a@b.com",
-    BIN: "1234",
-    ID: "1234",
-    pass: "1234",
-    circle: "abc",
-    type: "12",
-  };
+  const location = useLocation();
+  let company;
+  if (location.state) {
+    company = location.state.company;
+  }
 
   return (
     <div className="text-center">

@@ -1,4 +1,4 @@
-import { Outlet, Navigate } from "react-router-dom";
+import { Outlet, Navigate, ScrollRestoration } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
 
 const DefaultLayout = () => {

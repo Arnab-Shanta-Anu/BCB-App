@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useStateContext } from "../contexts/ContextProvider";
 import axios from "axios";
 import { Link } from "react-router-dom";
+
 const Login = () => {
   const { user, token, admin, setUser, setToken, setAdmin } = useStateContext();
 
@@ -24,7 +25,7 @@ const Login = () => {
         console.log(data);
         setUser(data.name);
         setToken(data.token);
-        setAdmin(data.admin);
+        if (data.admin === true) setAdmin(true);
       });
   };
 

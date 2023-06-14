@@ -17,6 +17,7 @@ import Form_4_3 from "./views/forms/Form-4-3";
 import Form_6_2 from "./views/forms/Form-6-2";
 import Form_9_1 from "./views/forms/Form-9-1";
 import CompanyInfo from "./components/CompanyInfo";
+import CompanyForm from "./views/CompanyForm";
 
 const NavbarWrapper = () => {
   return (
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
           {
             path: "/companies",
             element: <Companies />,
+          },
+          {
+            path: "/companies/add",
+            element: <CompanyForm />,
           },
           {
             path: "/company",

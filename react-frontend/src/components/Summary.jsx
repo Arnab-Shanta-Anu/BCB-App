@@ -1,4 +1,15 @@
+import { useLocation } from "react-router-dom";
+
 const Summary = ({}) => {
-  return <div>Summary page</div>;
+  const location = useLocation();
+  let company;
+  if (location.state) {
+    company = location.state.company;
+  }
+  return (
+    <div>
+      <h1 className="font-bold text-3xl">{company.name}</h1>
+    </div>
+  );
 };
 export default Summary;
