@@ -4,12 +4,13 @@ import CompanyInfo from "../components/CompanyInfo";
 import { useEffect, useState } from "react";
 
 const Companies = () => {
-  const [companyData, setCompanyData] = useState([]);
+  const [companyData, setCompanyData] = useState(null);
 
   useEffect(() => {
     console.log("fetching companies...");
     axios.get("http://localhost:4000/api/companies").then((response) => {
       setCompanyData(response.data);
+      console.log(companyData);
     });
   }, []);
 
@@ -17,7 +18,7 @@ const Companies = () => {
     <div className="text-center flex flex-col items-center">
       <h2 className="text-3xl font-semibold">List of Companies:</h2>
       <ol className="w-9/12 flex flex-col items-center">
-        {companyData.map((company) => (
+        {companyData && companyData.map((company) => (
           <li key={company._id} className="w-9/12 my-2">
             <CompanyInfo company={company} full={false} />;
             <br />

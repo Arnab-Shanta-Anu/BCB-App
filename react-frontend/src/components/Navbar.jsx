@@ -40,7 +40,7 @@ const Navbar = () => {
                   to="/logout"
                   className="text-xl hover:text-2xl hover:transition-all italic hover:underline font-bold text-violet-500"
                 >
-                  <span>
+                  <span className="inline">
                     <FiLogOut /> Logout
                   </span>
                 </Link>

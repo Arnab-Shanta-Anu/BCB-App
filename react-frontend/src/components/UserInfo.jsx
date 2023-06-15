@@ -8,7 +8,7 @@ const UserInfo = ({ user }, full) => {
     full = true;
   }
 
-  const { name, employee_id, pass } = Company;
+  const { name, employee_id, pass } = User;
   if (full === true) {
     return (
       <div className="text-center">
