@@ -3,7 +3,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Signup = () => {
+const UserInfo = () => {
   const { user, token, admin, setUser, setToken, setAdmin } = useStateContext();
 
   const nameRef = useRef();
@@ -83,4 +83,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default UserInfo;

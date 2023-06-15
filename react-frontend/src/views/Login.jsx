@@ -25,7 +25,7 @@ const Login = () => {
         console.log(data);
         setUser(data.name);
         setToken(data.token);
-        if (data.admin === true) setAdmin(true);
+        if (data.admin == true) setAdmin(true);
       });
   };
 

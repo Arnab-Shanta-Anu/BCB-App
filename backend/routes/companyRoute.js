@@ -14,7 +14,7 @@ let router = express.Router();
 router.get("/", getAllCompanies);
 
 //add a company
-router.get("/add", addCompany);
+router.post("/add", addCompany);
 
 //view single company
 router.get("/:id", getSingleCompany);

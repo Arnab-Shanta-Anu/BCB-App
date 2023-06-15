@@ -18,7 +18,6 @@ const login = async (req, res) => {
     };
     res.status(200).json(data);
   }
-  res.status(500).json({ msg: "Invalid" });
 };
 
 const signup = async (req, res) => {
@@ -41,4 +40,13 @@ const signup = async (req, res) => {
   }
 };
 
-module.exports = { login, signup };
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find().sort({ name: 1 });
+    res.status(200).json(users);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = { login, signup, getAllUsers };

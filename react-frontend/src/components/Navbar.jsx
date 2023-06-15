@@ -1,6 +1,11 @@
 import BcbLogo from "../public/bcbLogo.png";
 import { Link } from "react-router-dom";
+import { useStateContext } from "../contexts/ContextProvider";
+import { FiLogOut } from "react-icons/fi";
+
 const Navbar = () => {
+  const { token } = useStateContext();
+
   return (
     <nav>
       {/* holds the 2 parts */}
@@ -13,14 +18,6 @@ const Navbar = () => {
         {/* links */}
         <div className="basis-1/3 ml-16">
           <ul className="flex gap-x-2">
-            <li>
-              <Link
-                to="/home"
-                className="text-xl hover:text-2xl hover:transition-all italic hover:underline font-bold text-violet-500"
-              >
-                /home
-              </Link>
-            </li>
             <li>
               <Link
                 to="/companies"
@@ -37,6 +34,18 @@ const Navbar = () => {
                 /dashboard
               </Link>
             </li>
+            {token && (
+              <li>
+                <Link
+                  to="/logout"
+                  className="text-xl hover:text-2xl hover:transition-all italic hover:underline font-bold text-violet-500"
+                >
+                  <span>
+                    <FiLogOut /> Logout
+                  </span>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

@@ -7,7 +7,7 @@ const Companies = () => {
   const [companyData, setCompanyData] = useState([]);
 
   useEffect(() => {
-    console.log("fetching data");
+    console.log("fetching companies...");
     axios.get("http://localhost:4000/api/companies").then((response) => {
       setCompanyData(response.data);
     });
@@ -18,7 +18,7 @@ const Companies = () => {
       <h2 className="text-3xl font-semibold">List of Companies:</h2>
       <ol className="w-9/12 flex flex-col items-center">
         {companyData.map((company) => (
-          <li key={companyData[0]._id} className="w-9/12 my-2">
+          <li key={company._id} className="w-9/12 my-2">
             <CompanyInfo company={company} full={false} />;
             <br />
             <Link
@@ -39,13 +39,6 @@ const Companies = () => {
           </li>
         ))}
       </ol>
-      <Link
-        to="/companies/add"
-        className="sticky bottom-5 right-5 bg-red-500 font-semibold hover:text-white py-2 px-4
-       border-black rounded place-self-end"
-      >
-        Add new
-      </Link>
     </div>
   );
 };

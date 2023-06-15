@@ -1,23 +1,19 @@
-import {
-  Navigate,
-  Outlet,
-  createBrowserRouter,
-  useLocation,
-} from "react-router-dom";
+import { Navigate, Outlet, createBrowserRouter } from "react-router-dom";
+import CompanyInfo from "./components/CompanyInfo";
 import DefaultLayout from "./components/DefaultLayout";
 import GuestLayout from "./components/GuestLayout";
+import Logout from './components/Logout';
 import Navbar from "./components/Navbar";
 import Companies from "./views/Companies";
+import CompanyForm from "./views/CompanyForm";
 import Dashboard from "./views/Dashboard";
-import Home from "./views/Home";
 import Login from "./views/Login";
-import Signup from "./views/Signup";
 import Summaries from "./views/Summaries";
+import Signup from "./views/UserInfo";
+import Users from "./views/Users";
 import Form_4_3 from "./views/forms/Form-4-3";
 import Form_6_2 from "./views/forms/Form-6-2";
 import Form_9_1 from "./views/forms/Form-9-1";
-import CompanyInfo from "./components/CompanyInfo";
-import CompanyForm from "./views/CompanyForm";
 
 const NavbarWrapper = () => {
   return (
@@ -27,7 +23,6 @@ const NavbarWrapper = () => {
     </div>
   );
 };
-const getProps = () => {};
 const router = createBrowserRouter([
   {
     path: "/",
@@ -45,10 +40,6 @@ const router = createBrowserRouter([
             path: "/login",
             element: <Login />,
           },
-          {
-            path: "/signup",
-            element: <Signup />,
-          },
         ],
       },
 
@@ -58,11 +49,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/",
-            element: <Navigate to="/home" />,
-          },
-          {
-            path: "/home",
-            element: <Home />,
+            element: <Navigate to="/companies" />,
           },
           {
             path: "/companies",
@@ -96,6 +83,15 @@ const router = createBrowserRouter([
             path: "/dashboard",
             element: <Dashboard />,
           },
+          {
+            path: "/signup",
+            element: <Signup />,
+          },
+          {
+            path: "/logout",
+            element: <Logout />,
+          },
+          { path: "/users", element: <Users /> },
         ],
       },
     ],
