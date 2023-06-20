@@ -16,7 +16,7 @@ const Login = () => {
       password: passwordRef.current.value,
     };
     axios
-      .post("http://localhost:4000/api/users/login", payload, {
+      .post("http://localhost:4000/api/users/", payload, {
         headers: {
           Authorization: "Bearer " + token,
         },

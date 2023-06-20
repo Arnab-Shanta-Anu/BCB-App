@@ -1,10 +1,24 @@
 import { useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const UserInfo = () => {
-  const { user, token, admin, setUser, setToken, setAdmin } = useStateContext();
+const UserForm = () => {
+  const location = useLocation();
+  const { token } = useStateContext();
+  let buttonText = "Add";
+  let user = {
+    name: "",
+    pass: "",
+    admin: false,
+    employee_id: "",
+  };
+  if (location.state) {
+    user = location.state.user;
+    buttonText = "update";
+  }
+  const { name, pass, admin, employee_id } = user;
 
   const nameRef = useRef();
   const idRef = useRef();
@@ -17,19 +31,16 @@ const UserInfo = () => {
       name: nameRef.current.value,
       employee_id: idRef.current.value,
       pass: passwordRef.current.value,
-      admin: adminRef.current.checked
+      admin: adminRef.current.checked,
     };
     axios
-      .post("http://localhost:4000/api/users/signup", payload, {
+      .post("http://localhost:4000/api/users/new", payload, {
         headers: {
           Authorization: "Bearer " + token,
         },
       })
       .then(({ data }) => {
         console.log(data);
-        setUser(data.name);
-        setToken(data.token);
-        if (data.admin === true) setAdmin(true);
       });
   };
 
@@ -40,6 +51,7 @@ const UserInfo = () => {
         <label htmlFor="name">Name</label>
         <input
           ref={nameRef}
+          defaultValue={name}
           type="text"
           name="name"
           className="border-2 border-black rounded text-center"
@@ -48,6 +60,7 @@ const UserInfo = () => {
         <label htmlFor="employee_id">Employee ID</label>
         <input
           ref={idRef}
+          defaultValue={employee_id}
           type="text"
           name="employee_id"
           className="border-2 border-black rounded text-center"
@@ -56,13 +69,22 @@ const UserInfo = () => {
         <label htmlFor="password">Password</label>
         <input
           ref={passwordRef}
+          defaultValue={pass}
           type="password"
           name="password"
           className="border-2 border-black rounded text-center"
         />
         <br />
         <div>
-          <input ref={adminRef} type="checkbox" id="admin" name="admin" value="admin" /> &nbsp;
+          <input
+            ref={adminRef}
+            type="checkbox"
+            id="admin"
+            name="admin"
+            value="admin"
+            defaultChecked={admin ? "checked" : ""}
+          />
+          &nbsp;
           <label htmlFor="admin">Admin?</label>
         </div>
         <br />
@@ -70,17 +92,11 @@ const UserInfo = () => {
           className="bg-green-500 font-semibold hover:text-white py-2 px-4 border-black rounded"
           type="submit"
         >
-          Signup
+          {buttonText}
         </button>
       </form>
-      <h3>
-        Have an account?
-        <Link className="text-blue-400" to="/login">
-          Login
-        </Link>
-      </h3>
     </div>
   );
 };
 
-export default UserInfo;
+export default UserForm;

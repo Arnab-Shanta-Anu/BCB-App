@@ -24,14 +24,16 @@ const Users = () => {
               <UserInfo user={user} full={false} />
               <br />
               <Link
-                to="#"
+                to="/users/update"
+                state={{ user: user }}
                 className="bg-blue-500 font-semibold hover:text-white py-2 px-4 border-black rounded"
               >
                 Update
               </Link>
               &nbsp;
               <Link
-                to="#"
+                to="/users/delete"
+                state={{_id: user._id}}
                 className="bg-red-500 font-semibold hover:text-white py-2 px-4 border-black rounded"
               >
                 Delete

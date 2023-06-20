@@ -20,7 +20,7 @@ const login = async (req, res) => {
   }
 };
 
-const signup = async (req, res) => {
+const createUser = async (req, res) => {
   console.log(req.body);
   try {
     if (await User.findOne({ employee_id: req.body.employee_id })) {
@@ -32,7 +32,6 @@ const signup = async (req, res) => {
       employee_id: user.employee_id,
       pass: user.pass,
       admin: user.admin,
-      token: generateToken(user.employee_id),
     };
     res.status(201).json(data);
   } catch (err) {
@@ -49,4 +48,13 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-module.exports = { login, signup, getAllUsers };
+const deleteUser = async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.params.employee_id);
+    res.status(204).json(user);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = { login, createUser, getAllUsers, deleteUser };
